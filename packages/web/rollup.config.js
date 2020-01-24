@@ -1,13 +1,24 @@
 import babel from 'rollup-plugin-babel';
+import multi from 'rollup-plugin-multi-input';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
-  input: 'src/index.js',
+  input: 'src/**/*.js',
   output: {
-    file: 'dist/index.umd.js',
-    format: 'umd',
-    name: 'Userlist'
+    dir: 'dist',
+    format: 'esm'
   },
   plugins: [
-    babel()
+    multi(),
+    resolve(),
+    commonjs({
+      namedExports: {
+        '@rails/actioncable': ['createConsumer']
+      }
+    }),
+    babel({
+      runtimeHelpers: true
+    }),
   ]
 };
