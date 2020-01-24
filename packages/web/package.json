@@ -33,7 +33,6 @@
     "mocha": "^7.0.0",
     "rollup": "^1.29.0",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-multi-input": "^1.0.3",
     "sinon": "^8.0.4",
     "sinon-chai": "^3.4.0",
     "ws": "^7.2.1"

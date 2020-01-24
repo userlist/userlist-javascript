@@ -1,16 +1,15 @@
 import babel from 'rollup-plugin-babel';
-import multi from 'rollup-plugin-multi-input';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 export default {
-  input: 'src/**/*.js',
+  input: 'src/index.js',
   output: {
-    dir: 'dist',
-    format: 'esm'
+    file: 'dist/index.js',
+    format: 'umd',
+    name: 'Userlist'
   },
   plugins: [
-    multi(),
     resolve(),
     commonjs({
       namedExports: {

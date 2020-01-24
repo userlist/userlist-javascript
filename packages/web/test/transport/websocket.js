@@ -1,40 +1,7 @@
 import { expect } from 'chai';
-import { Server } from 'ws';
-import EventEmitter from 'events';
 
 import { WebsocketTransport } from '../../src/index';
-
-class ActionCableMock extends EventEmitter {
-  constructor() {
-    super(...arguments);
-
-    this.server = new Server({ port: 0 });
-    this.server.on('connection', (socket) => {
-      socket.on('message', (message) => {
-        let payload = JSON.parse(message);
-
-        if(payload.command == 'message') {
-          payload.data = JSON.parse(payload.data);
-          this.emit('message', payload, socket);
-        } else if (payload.command == 'subscribe') {
-          socket.send(JSON.stringify({ type: 'confirm_subscription', identifier: payload.identifier }));
-          this.emit('subscription', payload, socket);
-        }
-      });
-
-      socket.send('{"type":"welcome"}');
-      this.emit('connection', socket);
-    });
-  }
-
-  close(callback) {
-    this.server.close(callback);
-  }
-
-  get url() {
-    return `ws://localhost:${this.server.address().port}`;
-  }
-}
+import ActionCableMock from '../support/action_cable_mock';
 
 describe('WebsocketTransport', function() {
   let server, transport;
@@ -85,5 +52,17 @@ describe('WebsocketTransport', function() {
 
     transport = new WebsocketTransport(server.url);
     transport.track('static-token', 'event-name', { properties: { foo: 42 } });
+  });
+
+  it('receives data from the server', function(done) {
+    server.on('subscription', (payload, socket) => {
+      socket.send(JSON.stringify({ type: 'data', identifier: payload.identifier, message: JSON.stringify({ id: 'message-id' }) }));
+    });
+
+    transport = new WebsocketTransport(server.url);
+    transport.on('message', (message) => {
+      expect(message.id).to.equal('message-id');
+      done();
+    });
   });
 });

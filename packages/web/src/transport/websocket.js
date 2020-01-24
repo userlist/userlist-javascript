@@ -1,7 +1,11 @@
+import EventEmitter from '../utils/event_emitter';
+
 import { createConsumer } from '@rails/actioncable';
 
-export default class WebsocketTransport {
+export default class WebsocketTransport extends EventEmitter {
   constructor(endpoint = 'wss://api.widget.userlist.com/cable') {
+    super();
+
     let consumer = createConsumer(endpoint);
     let queue = [];
     let transport = this;
@@ -11,11 +15,14 @@ export default class WebsocketTransport {
         while(queue.length > 0) {
           this.send(queue.shift());
         }
+      },
+
+      received(data) {
+        transport.emit('message', JSON.parse(data))
       }
     });
 
     this._queue = queue;
-    this._consumer = consumer;
     this._connection = consumer.connection;
     this._subscription = subscription;
   }
