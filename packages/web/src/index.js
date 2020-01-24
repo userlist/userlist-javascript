@@ -25,6 +25,10 @@ export default class Userlist {
     this.transport.track(token, ...args);
   }
 
+  on(...args) {
+    this.transport.on(...args);
+  }
+
   close() {
     this.transport.close();
   }
