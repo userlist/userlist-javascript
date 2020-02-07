@@ -6,9 +6,9 @@ import PromiseTokenProvider from './token_provider/promise';
 export default class Userlist {
   constructor(options = {}) {
     if(typeof options === 'string') {
-      options = { tokenProvider: new StaticTokenProvider(options) }
+      options = { tokenProvider: new StaticTokenProvider(options) };
     } else if(typeof options.then === 'function') {
-      options = { tokenProvider: new PromiseTokenProvider(options) }
+      options = { tokenProvider: new PromiseTokenProvider(options) };
     }
 
     this.tokenProvider = options.tokenProvider;

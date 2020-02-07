@@ -3,7 +3,7 @@ export default class PromiseTokenProvider {
     this._promise = promise;
   }
 
-  async receiveToken() {
+  async receiveToken() {
     return await this._promise;
   }
 }

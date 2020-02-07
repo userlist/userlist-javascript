@@ -3,7 +3,7 @@ export default class StaticTokenProvider {
     this._token = token;
   }
 
-  async receiveToken() {
+  async receiveToken() {
     return this._token;
   }
 }

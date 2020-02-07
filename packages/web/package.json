@@ -14,9 +14,11 @@
     "url": "git+https://github.com/userlistio/userlist-javascript.git"
   },
   "scripts": {
+    "lint": "eslint src test",
     "build": "rollup -c",
     "test": "mocha --require test/helper --require @babel/register --recursive --colors",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "prepublish": "yarn lint && yarn test && yarn build"
   },
   "bugs": {
     "url": "https://github.com/userlistio/userlist-javascript/issues"
@@ -29,7 +31,14 @@
     "@babel/runtime": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "mocha": "^7.0.0",
     "rollup": "^1.29.0",
     "rollup-plugin-babel": "^4.3.3",

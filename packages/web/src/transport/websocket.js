@@ -12,7 +12,7 @@ export default class WebsocketTransport extends EventEmitter {
 
     let subscription = consumer.subscriptions.create('Widget::MessagingChannel', {
       connected() {
-        while(queue.length > 0) {
+        while(queue.length > 0) {
           this.send(queue.shift());
         }
       },
@@ -21,8 +21,6 @@ export default class WebsocketTransport extends EventEmitter {
         transport.emit('message', data)
       }
     });
-
-    console.info("tokenProvider", tokenProvider);
 
     this._tokenProvider = tokenProvider;
     this._queue = queue;

@@ -32,7 +32,7 @@ describe('WebsocketTransport', function() {
   });
 
   it('sends the identify call', function(done) {
-    server.on('message', (payload, socket) => {
+    server.on('message', (payload) => {
       expect(payload.data.action).to.equal('identify');
       expect(payload.data.email).to.equal('foo@example.com');
       expect(payload.data.properties).to.deep.equal({ foo: 42 });
@@ -44,7 +44,7 @@ describe('WebsocketTransport', function() {
   });
 
   it('sends the track call', function(done) {
-    server.on('message', (payload, socket) => {
+    server.on('message', (payload) => {
       expect(payload.data.action).to.equal('track');
       expect(payload.data.name).to.equal('event-name');
       expect(payload.data.properties).to.deep.equal({ foo: 42 });
