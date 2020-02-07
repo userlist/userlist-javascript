@@ -1,13 +1,14 @@
 import { expect } from 'chai';
 
-import { WebsocketTransport } from '../../src/index';
+import { WebsocketTransport, StaticTokenProvider } from '../../src/index';
 import ActionCableMock from '../support/action_cable_mock';
 
 describe('WebsocketTransport', function() {
-  let server, transport;
+  let server, transport, tokenProvider;
 
   beforeEach(function() {
     server = new ActionCableMock();
+    tokenProvider = new StaticTokenProvider('static-token');
   });
 
   afterEach(function() {
@@ -18,7 +19,7 @@ describe('WebsocketTransport', function() {
   it('connects to the server', function(done) {
     server.on('connection', () => { done(); });
 
-    transport = new WebsocketTransport(server.url);
+    transport = new WebsocketTransport(tokenProvider, server.url);
   });
 
   it('subscribes to the correct channel server', function(done) {
@@ -27,7 +28,7 @@ describe('WebsocketTransport', function() {
       done();
     });
 
-    transport = new WebsocketTransport(server.url);
+    transport = new WebsocketTransport(tokenProvider, server.url);
   });
 
   it('sends the identify call', function(done) {
@@ -38,8 +39,8 @@ describe('WebsocketTransport', function() {
       done();
     });
 
-    transport = new WebsocketTransport(server.url);
-    transport.identify('static-token', { email: 'foo@example.com', properties: { foo: 42 } });
+    transport = new WebsocketTransport(tokenProvider, server.url);
+    transport.identify({ email: 'foo@example.com', properties: { foo: 42 } });
   });
 
   it('sends the track call', function(done) {
@@ -50,16 +51,16 @@ describe('WebsocketTransport', function() {
       done();
     });
 
-    transport = new WebsocketTransport(server.url);
-    transport.track('static-token', 'event-name', { properties: { foo: 42 } });
+    transport = new WebsocketTransport(tokenProvider, server.url);
+    transport.track('event-name', { properties: { foo: 42 } });
   });
 
   it('receives data from the server', function(done) {
     server.on('subscription', (payload, socket) => {
-      socket.send(JSON.stringify({ type: 'data', identifier: payload.identifier, message: JSON.stringify({ id: 'message-id' }) }));
+      socket.send(JSON.stringify({ type: 'data', identifier: payload.identifier, message: { id: 'message-id' } }));
     });
 
-    transport = new WebsocketTransport(server.url);
+    transport = new WebsocketTransport(tokenProvider, server.url);
     transport.on('message', (message) => {
       expect(message.id).to.equal('message-id');
       done();
