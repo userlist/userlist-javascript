@@ -24,7 +24,7 @@ describe('WebsocketTransport', function() {
 
   it('subscribes to the correct channel server', function(done) {
     server.on('subscription', (payload) => {
-      expect(payload.identifier).to.equal("{\"channel\":\"Widget::MessagingChannel\"}")
+      expect(payload.identifier).to.equal("{\"channel\":\"Widget::MessagingChannel\",\"token\":\"static-token\"}")
       done();
     });
 
