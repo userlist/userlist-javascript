@@ -29,7 +29,7 @@ function createWidget(widgetURI) {
 }
 
 export default class Widget {
-  constructor(tokenProvider, endpoint = 'https://userlist-widget.test') {
+  constructor(tokenProvider, endpoint = 'https://widget.userlist.com') {
     this.tokenProvider = tokenProvider;
     this.element = createWidget(endpoint);
 
