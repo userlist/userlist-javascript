@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 
 use(sinonChai)
 
-import Userlist, { NullTransport, WebsocketTransport, StaticTokenProvider } from '../src/index';
+import Userlist, { NullTransport, WidgetTransport, StaticTokenProvider } from '../src/index';
 
 describe('Userlist', function() {
   let transport, userlist, tokenProvider;
@@ -25,7 +25,7 @@ describe('Userlist', function() {
     });
 
     it('should use a default transport', function() {
-      expect(userlist.transport).to.be.instanceof(WebsocketTransport);
+      expect(userlist.transport).to.be.instanceof(WidgetTransport);
     });
 
     it('should use a default token provider', function() {

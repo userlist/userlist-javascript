@@ -1,23 +1,23 @@
-var WebSocket = require('ws');
+var { JSDOM } = require('jsdom');
 
-class WebSocketWithOrigin extends WebSocket {
-  constructor(address, protocols, options = {}) {
-    options.origin = 'https://localhost:4300';
-    super(address, protocols, options);
-  }
+var { window } = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);
+
+if(global.window === undefined) {
+  global.window = window;
+}
+
+if(global.document === undefined) {
+  global.document = window.document;
 }
 
 if(global.self === undefined) {
-  global.self = {
-    console: console,
-    WebSocket: WebSocketWithOrigin
-  };
+  global.self = window;
 }
 
 if(global.addEventListener === undefined) {
-  global.addEventListener = function() {};
+  global.addEventListener = window.addEventListener;
 }
 
 if(global.removeEventListener === undefined) {
-  global.removeEventListener = function() {};
+  global.removeEventListener = window.removeEventListener;
 }

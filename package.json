@@ -6,7 +6,8 @@
   },
   "scripts": {
     "build": "lerna run build --stream --concurrency 1",
-    "test": "lerna run test --stream --concurrency 1"
+    "test": "lerna run test --stream --concurrency 1",
+    "lint": "lerna run lint --stream --concurrency 1"
   },
   "workspaces": [
     "packages/*"

@@ -1,7 +1,10 @@
 import NullTransport from './transport/null';
 import WebsocketTransport from './transport/websocket';
+import WidgetTransport from './transport/widget';
 import StaticTokenProvider from './token_provider/static';
 import PromiseTokenProvider from './token_provider/promise';
+
+import Widget from '@userlist/widget';
 
 export default class Userlist {
   constructor(options = {}) {
@@ -12,7 +15,13 @@ export default class Userlist {
     }
 
     this.tokenProvider = options.tokenProvider;
-    this.transport = this.transport || options.transport || new WebsocketTransport(this.tokenProvider);
+
+    if(options.widget !== false) {
+      this.widget = new Widget(this.tokenProvider);
+      this.transport = options.transport || new WidgetTransport(this.widget);
+    } else {
+      this.transport = options.transport || new WebsocketTransport(this.tokenProvider);
+    }
   }
 
   async identify(...args) {
@@ -30,11 +39,12 @@ export default class Userlist {
   close() {
     this.transport.close();
   }
-};
+}
 
 export {
   NullTransport,
   WebsocketTransport,
+  WidgetTransport,
 
   StaticTokenProvider,
   PromiseTokenProvider
