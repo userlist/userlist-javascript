@@ -1,6 +1,6 @@
 {
   "name": "@userlist/web",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Userlist for web applications",
   "author": "Benedikt Deicke <benedikt@userlist.com>",
   "homepage": "https://github.com/userlistio/userlist-javascript",
@@ -49,6 +49,6 @@
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.2-1",
-    "@userlist/widget": "^0.0.1"
+    "@userlist/widget": "^0.1.0"
   }
 }
