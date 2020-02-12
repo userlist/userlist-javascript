@@ -5,7 +5,8 @@
   "author": "Benedikt Deicke <benedikt@userlist.com>",
   "homepage": "https://github.com/userlistio/userlist-javascript",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "publishConfig": {
     "access": "public"
   },

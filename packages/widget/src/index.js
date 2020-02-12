@@ -28,7 +28,7 @@ function createWidget(widgetURI) {
   return element;
 }
 
-export default class Widget {
+class Widget {
   constructor(tokenProvider, endpoint = 'https://widget.userlist.com') {
     this.tokenProvider = tokenProvider;
     this.element = createWidget(endpoint);
@@ -72,5 +72,6 @@ export default class Widget {
 }
 
 export {
+  Widget,
   Channel
 };

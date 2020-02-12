@@ -1,23 +1,26 @@
 import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import pkg from './package.json';
 
 export default {
   input: 'src/index.js',
-  output: {
-    file: 'dist/index.js',
-    format: 'umd',
-    name: 'Userlist'
-  },
+  external: ['@rails/actioncable'],
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs'
+    },
+    {
+      file: pkg.module,
+      format: 'esm'
+    }
+  ],
   plugins: [
     resolve(),
-    commonjs({
-      namedExports: {
-        '@rails/actioncable': ['createConsumer']
-      }
-    }),
+    commonjs(),
     babel({
       runtimeHelpers: true
-    }),
+    })
   ]
 };

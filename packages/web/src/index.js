@@ -4,9 +4,9 @@ import WidgetTransport from './transport/widget';
 import StaticTokenProvider from './token_provider/static';
 import PromiseTokenProvider from './token_provider/promise';
 
-import Widget from '@userlist/widget';
+import { Widget } from '@userlist/widget';
 
-export default class Userlist {
+class Userlist {
   constructor(options = {}) {
     if(typeof options === 'string') {
       options = { tokenProvider: new StaticTokenProvider(options) };
@@ -42,6 +42,8 @@ export default class Userlist {
 }
 
 export {
+  Userlist,
+
   NullTransport,
   WebsocketTransport,
   WidgetTransport,

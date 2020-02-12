@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 
 use(sinonChai)
 
-import Userlist, { NullTransport, WidgetTransport, StaticTokenProvider } from '../src/index';
+import { Userlist, NullTransport, WidgetTransport, StaticTokenProvider } from '../src/index';
 
 describe('Userlist', function() {
   let transport, userlist, tokenProvider;
