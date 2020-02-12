@@ -14,12 +14,12 @@ export default class WebsocketTransport extends EventEmitter {
     this._createSubscription();
   }
 
-  async identify(attributes = {}) {
-    this._perform('identify', { ...attributes });
+  async identify(properties = {}) {
+    this._perform('identify', properties);
   }
 
-  async track(name, attributes = {}) {
-    this._perform('track', { ...attributes, name });
+  async track(name, properties = {}) {
+    this._perform('track', { properties, name });
   }
 
   close() {

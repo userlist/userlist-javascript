@@ -52,7 +52,7 @@ describe('WebsocketTransport', function() {
     });
 
     transport = new WebsocketTransport(tokenProvider, server.url);
-    transport.track('event-name', { properties: { foo: 42 } });
+    transport.track('event-name', { foo: 42 });
   });
 
   it('receives data from the server', function(done) {
