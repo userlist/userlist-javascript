@@ -12,12 +12,19 @@ class Userlist {
       options = { tokenProvider: new StaticTokenProvider(options) };
     } else if(typeof options.then === 'function') {
       options = { tokenProvider: new PromiseTokenProvider(options) };
+    } else if(typeof options === 'object' && typeof options.token === 'string') {
+      options.tokenProvider = new StaticTokenProvider(options.token);
     }
 
     this.tokenProvider = options.tokenProvider;
 
     if(options.widget !== false) {
-      this.widget = new Widget(this.tokenProvider);
+      if(typeof options.widget === 'string' || typeof options.widget === 'object') {
+        this.widget = new Widget(this.tokenProvider, options.widget)
+      } else {
+        this.widget = new Widget(this.tokenProvider);
+      }
+
       this.transport = options.transport || new WidgetTransport(this.widget);
     } else {
       this.transport = options.transport || new WebsocketTransport(this.tokenProvider);
