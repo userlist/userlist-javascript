@@ -1,6 +1,6 @@
 {
   "name": "@userlist/web",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Userlist for web applications",
   "author": "Benedikt Deicke <benedikt@userlist.com>",
   "homepage": "https://github.com/userlistio/userlist-javascript",
