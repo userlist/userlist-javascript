@@ -1,4 +1,5 @@
 import EventEmitter from '../utils/event_emitter';
+import { extractMessageId } from '../utils/message';
 
 import { createConsumer } from '@rails/actioncable';
 
@@ -20,6 +21,18 @@ export default class WebsocketTransport extends EventEmitter {
 
   async track(name, properties = {}) {
     this._perform('track', { properties, name });
+  }
+
+  async openMessage(message) {
+    this._perform('open_message', { message_id: extractMessageId(message) });
+  }
+
+  async closeMessage(message) {
+    this._perform('close_message', { message_id: extractMessageId(message) });
+  }
+
+  async clickMessage(message, url) {
+    this._perform('click_message', { message_id: extractMessageId(message), url });
   }
 
   close() {

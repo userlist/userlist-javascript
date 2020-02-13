@@ -1,4 +1,5 @@
 import EventEmitter from '../utils/event_emitter';
+import { extractMessageId } from '../utils/message';
 
 export default class WidgetTransport extends EventEmitter {
   constructor(widget) {
@@ -13,6 +14,18 @@ export default class WidgetTransport extends EventEmitter {
 
   async track(name, attributes) {
     this._perform('track', [name, attributes]);
+  }
+
+  async openMessage(message) {
+    this._perform('open_message', { message_id: extractMessageId(message) });
+  }
+
+  async closeMessage(message) {
+    this._perform('close_message', { message_id: extractMessageId(message) });
+  }
+
+  async clickMessage(message, url) {
+    this._perform('click_message', { message_id: extractMessageId(message), url });
   }
 
   close() {}

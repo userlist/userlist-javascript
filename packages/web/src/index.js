@@ -32,6 +32,18 @@ class Userlist {
     this.transport.track(...args);
   }
 
+  async openMessage(...args) {
+    this.transport.openMessage(...args);
+  }
+
+  async closeMessage(...args) {
+    this.transport.openMessage(...args);
+  }
+
+  async clickMessage(...args) {
+    this.transport.openMessage(...args);
+  }
+
   on(...args) {
     this.transport.on(...args);
   }
