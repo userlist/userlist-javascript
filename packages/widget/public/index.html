@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <script src="/index.esm.js" type="module"></script>
+    <script type="module">
+      import { Widget } from '/index.esm.js';
+
+      class StaticTokenProvider {
+        constructor(token) {
+          this.token = token;
+        }
+
+        async receiveToken() {
+          return this.token;
+        }
+      }
+
+      var token = 'eyJraWQiOiJwa19uMkp0b0owSlptTHlwMFZYSHJiSE1nTDBmRjFxT290RSIsImFsZyI6IkhTMjU2In0.eyJzdWIiOiJmZTgzYzAxYTU2MDZhMjBiZjVkN2ZjYjA2MjVjOWY3ZSJ9.Th0lAZVmFH8cAoeMTvfjKilit2-crc83DQdRFoDGfRA';
+      var tokenProvider = new StaticTokenProvider(token);
+      var userlist = new Widget(tokenProvider, 'http://localhost:4300');
+    </script>
+  </body>
+</html>

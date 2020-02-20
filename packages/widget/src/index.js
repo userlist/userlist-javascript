@@ -1,29 +1,23 @@
 import Channel from './channel';
+import styles from './styles.css';
 
 function createWidget(widgetURI) {
+  let body = document.body;
+
+  let style = window.document.createElement('style');
   let element = window.document.createElement('div');
   let iframe = window.document.createElement('iframe');
 
   iframe.src = widgetURI;
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.border = 'none';
-
-  element.style.border = 'none';
-  element.style.position = 'fixed';
-  element.style.bottom = '30px';
-  element.style.right = '30px';
-  element.style.height = '0px';
-  element.style.width = '0px';
-  element.style.borderRadius = '20px';
-  element.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.15)';
-  element.style.opacity = 0;
-  element.style.transition = 'opacity .2s, transform .2s';
-  element.style.transform = 'translateY(100px)';
-  element.style.overflow = 'hidden';
 
   element.appendChild(iframe);
-  document.body.appendChild(element);
+  element.classList.add('userlist-container');
+
+  body.appendChild(style);
+  body.appendChild(element);
+
+  style.type = 'text/css';
+  style.appendChild(document.createTextNode(styles));
 
   return element;
 }
@@ -55,19 +49,19 @@ class Widget {
     });
   }
 
-  resize({ width, height }) {
-    this.element.style.width = `${width}px`;
+  resize({ height }) {
     this.element.style.height = `${height}px`;
   }
 
   open() {
-    this.element.style.transform = 'translateY(0px)';
-    this.element.style.opacity = 1;
+    this.element.classList.add('userlist-open');
+    this.element.classList.remove('userlist-closed');
   }
 
   close() {
-    this.element.style.opacity = 0;
-    this.element.style.transform = 'translateY(100px)';
+    this.element.classList.add('userlist-closed');
+    this.element.classList.remove('userlist-open');
+    this.resize({ height: 0 });
   }
 }
 

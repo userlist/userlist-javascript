@@ -17,6 +17,7 @@
   "scripts": {
     "lint": "eslint src test",
     "build": "rollup -c",
+    "serve": "rollup -c rollup.serve.js",
     "test": "mocha --require test/helper --require @babel/register --recursive --colors",
     "test:watch": "yarn test --watch",
     "prepublish": "yarn lint && yarn test && yarn build"
@@ -32,11 +33,15 @@
     "@babel/runtime": "^7.8.3",
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "autoprefixer": "^9.7.4",
     "chai": "^4.2.0",
     "jsdom": "^16.1.0",
     "mocha": "^7.0.0",
+    "postcss-initial": "^3.0.2",
     "rollup": "^1.29.0",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-postcss": "^2.0.6",
+    "rollup-plugin-serve": "^1.0.1",
     "sinon": "^8.0.4",
     "sinon-chai": "^3.4.0"
   }

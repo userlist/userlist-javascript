@@ -1,0 +1,45 @@
+.userlist-container {
+  all: initial;
+
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  height: 0px;
+  width: 350px;
+
+  max-height: calc(100vh - 60px);
+
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+
+  opacity: 0;
+  transform: translateY(100px);
+
+  transition: opacity .2s, transform .2s, height .2s;
+  overflow: hidden;
+}
+
+.userlist-container.userlist-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.userlist-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media only screen and (max-width: 460px) {
+  .userlist-container {
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    border-radius: 0;
+    max-width: none;
+
+    width: 100% !important;
+  }
+}
