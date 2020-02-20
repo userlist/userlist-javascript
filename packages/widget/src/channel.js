@@ -5,14 +5,12 @@ const INIT = 'userlist/init';
 export default class Channel extends EventEmitter {
   static connect(element) {
     return new Promise((resolve) => {
-      let outgoingChannel = new MessageChannel();
-      let incomingChannel = new MessageChannel();
+      let messageChannel = new MessageChannel();
 
-      let channel = new Channel(incomingChannel.port2, outgoingChannel.port1);
-
+      let channel = new Channel(messageChannel.port1);
       channel.on('connect', () => resolve(channel));
 
-      element.postMessage(INIT, '*', [outgoingChannel.port2, incomingChannel.port1]);
+      element.postMessage(INIT, '*', [messageChannel.port2]);
     });
   }
 
@@ -20,36 +18,33 @@ export default class Channel extends EventEmitter {
     return new Promise((resolve) => {
       element.addEventListener('message', (event) => {
         if(event.data === INIT) {
-          let [incoming, outgoing] = event.ports;
-          let channel = new Channel(incoming, outgoing);
+          let channel = new Channel(event.ports[0]);
           channel.on('connect', () => resolve(channel));
         }
       })
     });
   }
 
-  constructor(incoming, outgoing) {
+  constructor(port) {
     super();
 
-    this.incoming = incoming;
-    this.outgoing = outgoing;
+    this.port = port;
 
-    incoming.addEventListener('message', (event) => {
+    port.addEventListener('message', (event) => {
       let { type, payload } = event.data;
       this.emit(type, payload);
     });
 
-    incoming.start();
+    port.start();
 
     this.postMessage('connect');
   }
 
   postMessage(type, payload) {
-    return this.outgoing.postMessage({ type, payload });
+    return this.port.postMessage({ type, payload });
   }
 
   close() {
-    this.incoming.close();
-    this.outgoing.close();
+    this.port.close();
   }
 }

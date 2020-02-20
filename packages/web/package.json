@@ -50,6 +50,6 @@
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.2-1",
-    "@userlist/widget": "^0.3.0"
+    "@userlist/widget": "^0.3.1"
   }
 }

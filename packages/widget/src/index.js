@@ -25,7 +25,6 @@ function createWidget(widgetURI) {
 class Widget {
   constructor(tokenProvider, endpoint = 'https://widget.userlist.com') {
     this.tokenProvider = tokenProvider;
-    this.element = createWidget(endpoint);
 
     this.connectChannel().then((channel) => {
       channel.on('resize', (dimensions) => {
@@ -37,9 +36,11 @@ class Widget {
         }
       });
     });
+
+    this.element = createWidget(endpoint);
   }
 
-  async connectChannel() {
+  connectChannel() {
     return this._connectChannel = this._connectChannel || Channel.listen(window).then((channel) => {
       return this.tokenProvider.receiveToken().then((token) => {
         channel.postMessage('init', { token });
