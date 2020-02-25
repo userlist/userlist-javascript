@@ -55,14 +55,38 @@ describe('WebsocketTransport', function() {
     transport.track('event-name', { foo: 42 });
   });
 
-  it('receives data from the server', function(done) {
+  it('receives messages from the server', function(done) {
     server.on('subscription', (payload, socket) => {
-      socket.send(JSON.stringify({ type: 'data', identifier: payload.identifier, message: { id: 'message-id' } }));
+      socket.send(JSON.stringify({ identifier: payload.identifier, message: { data: { type: 'messages', id: 'message-id' } } }));
     });
 
     transport = new WebsocketTransport(tokenProvider, server.url);
-    transport.on('message', (message) => {
-      expect(message.id).to.equal('message-id');
+    transport.on('message', (payload) => {
+      expect(payload.data.id).to.equal('message-id');
+      done();
+    });
+  });
+
+  it('receives config from the server', function(done) {
+    server.on('subscription', (payload, socket) => {
+      socket.send(JSON.stringify({ identifier: payload.identifier, message: { data: { type: 'configurations', id: 'config-id' } } }));
+    });
+
+    transport = new WebsocketTransport(tokenProvider, server.url);
+    transport.on('config', (payload) => {
+      expect(payload.data.id).to.equal('config-id');
+      done();
+    });
+  });
+
+  it('receives data from the server', function(done) {
+    server.on('subscription', (payload, socket) => {
+      socket.send(JSON.stringify({ identifier: payload.identifier, message: { foo: 'bar' } }));
+    });
+
+    transport = new WebsocketTransport(tokenProvider, server.url);
+    transport.on('data', (payload) => {
+      expect(payload.foo).to.equal('bar');
       done();
     });
   });

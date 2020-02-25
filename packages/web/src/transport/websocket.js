@@ -56,8 +56,16 @@ export default class WebsocketTransport extends EventEmitter {
           }
         },
 
-        received(data) {
-          transport.emit('message', data)
+        received(payload) {
+          let type = payload && payload.data && payload.data.type;
+
+          if(type === 'messages') {
+            transport.emit('message', payload);
+          } else if(type === 'configurations') {
+            transport.emit('config', payload);
+          } else {
+            transport.emit('data', payload);
+          }
         }
       });
 
