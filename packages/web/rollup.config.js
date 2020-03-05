@@ -3,7 +3,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
 
-const external = ['@rails/actioncable'];
 const plugins = [
   resolve({
     browser: true
@@ -31,7 +30,6 @@ export default [
         format: 'esm'
       }
     ],
-    external,
     plugins
   },
   {
