@@ -57,5 +57,8 @@
   "dependencies": {
     "@rails/actioncable": "^6.0.2-2",
     "@userlist/widget": "^0.3.4"
+  },
+  "resolutions": {
+    "minimist": "^1.2.2"
   }
 }
