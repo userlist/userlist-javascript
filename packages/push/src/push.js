@@ -15,11 +15,11 @@ export default class Userlist {
     this.companies = new Relation(this, Company);
     this.events = new Relation(this, Event);
 
-    this.user = this.users.create;
-    this.company = this.companies.create;
-    this.event = this.events.create;
-
     this.identify = this.user;
     this.track = this.event;
   }
+
+  user(...args) { this.users.create(...args); }
+  company(...args) { this.companies.create(...args); }
+  event(...args) { this.events.create(...args); }
 }

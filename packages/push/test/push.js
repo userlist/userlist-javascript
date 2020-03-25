@@ -1,4 +1,9 @@
-import { expect } from 'chai';
+import { expect, use } from 'chai';
+import { spy } from 'sinon';
+
+import sinonChai from 'sinon-chai';
+
+use(sinonChai);
 
 import Userlist from '../src/push';
 import Relation from '../src/relation';
@@ -33,23 +38,29 @@ describe('Userlist', function() {
     expect(userlist.events.resource).to.eq(Event);
   });
 
-  it('should alias the users.create method as user', function() {
-    expect(userlist.user).to.be.eq(userlist.users.create);
+  it('should delegate the user method to users.create', function() {
+    userlist.users.create = spy();
+    userlist.user({ identifier: 'user-identifier' });
+    expect(userlist.users.create).calledOnceWith({ identifier: 'user-identifier' });
   });
 
-  it('should alias the events.create method as event', function() {
-    expect(userlist.event).to.be.eq(userlist.events.create);
+  it('should delegate the event method to events.create', function() {
+    userlist.events.create = spy();
+    userlist.event({ name: 'custom_event', user: '1' });
+    expect(userlist.events.create).calledOnceWith({ name: 'custom_event', user: '1' });
   });
 
-  it('should alias the companies.create method as company', function() {
-    expect(userlist.company).to.be.eq(userlist.companies.create);
+  it('should delegate the company method to companies.create', function() {
+    userlist.companies.create = spy();
+    userlist.company({ identifier: 'company-identifier' });
+    expect(userlist.companies.create).calledOnceWith({ identifier: 'company-identifier' });
   });
 
-  it('should alias the events.create method as track', function() {
-    expect(userlist.track).to.be.eq(userlist.events.create);
+  it('should alias the event method as track', function() {
+    expect(userlist.track).to.be.eq(userlist.event);
   });
 
-  it('should alias the users.create method as identify', function() {
-    expect(userlist.identify).to.be.eq(userlist.users.create);
+  it('should alias the user method as identify', function() {
+    expect(userlist.identify).to.be.eq(userlist.user);
   });
 });
