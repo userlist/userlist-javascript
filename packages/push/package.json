@@ -10,6 +10,12 @@
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "test"
+  ],
   "publishConfig": {
     "access": "public"
   },
