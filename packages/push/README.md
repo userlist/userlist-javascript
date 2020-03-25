@@ -1,6 +1,8 @@
 # @userlist/push
 
-This package helps with integrating [Userlist](http://userlist.com) into Node.js applications.
+This package helps with integrating [Userlist](http://userlist.com) into Node.js applications for _server side tracking_.
+
+> For client side tracking, please use [@userlist/web](https://github.com/userlistio/userlist-javascript/tree/master/packages/web).
 
 ## Installation
 
