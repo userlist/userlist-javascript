@@ -23,6 +23,9 @@ export default {
   ],
   plugins: [
     resolve(),
+    babel({
+      runtimeHelpers: true
+    }),
     commonjs(),
     postcss({
       inject: false,
@@ -31,9 +34,6 @@ export default {
         autoprefixer,
         initial
       ]
-    }),
-    babel({
-      runtimeHelpers: true
     })
   ]
 };
