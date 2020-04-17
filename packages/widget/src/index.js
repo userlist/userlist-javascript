@@ -10,10 +10,10 @@ function createWidget(widgetURI) {
 
   iframe.src = widgetURI;
 
+  element.appendChild(style);
   element.appendChild(iframe);
   element.classList.add('userlist-container');
 
-  body.appendChild(style);
   body.appendChild(element);
 
   style.type = 'text/css';
@@ -63,6 +63,14 @@ class Widget {
     this.element.classList.add('userlist-closed');
     this.element.classList.remove('userlist-open');
     this.resize({ height: 0 });
+  }
+
+  destroy() {
+    if(this._connectChannel) {
+      this.connectChannel().then((channel) => channel.close());
+    }
+
+    this.element.remove();
   }
 }
 

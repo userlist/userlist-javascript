@@ -58,6 +58,14 @@ class Userlist {
   close() {
     this.transport.close();
   }
+
+  destroy() {
+    if(this.widget) {
+      this.widget.destroy();
+    }
+
+    this.transport = new NullTransport();
+  }
 }
 
 export {
