@@ -13,6 +13,7 @@ function createWidget(widgetURI) {
   element.appendChild(style);
   element.appendChild(iframe);
   element.classList.add('userlist-container');
+  element.classList.add('userlist-bottom-right');
 
   body.appendChild(element);
 
@@ -35,6 +36,10 @@ class Widget {
           this.close();
         }
       });
+
+      channel.on('reposition', (position) => {
+        this.reposition(position);
+      });
     });
 
     this.element = createWidget(endpoint);
@@ -52,6 +57,17 @@ class Widget {
 
   resize({ height }) {
     this.element.style.height = `${height}px`;
+  }
+
+  reposition(position) {
+    let classList = this.element.classList;
+
+    classList.remove('userlist-top-right');
+    classList.remove('userlist-top-left');
+    classList.remove('userlist-bottom-right');
+    classList.remove('userlist-bottom-left');
+
+    classList.add(`userlist-${position}`);
   }
 
   open() {

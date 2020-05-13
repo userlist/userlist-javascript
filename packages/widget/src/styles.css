@@ -2,8 +2,6 @@
   all: initial;
 
   position: fixed;
-  bottom: 30px;
-  right: 30px;
 
   height: 0px;
   width: 400px;
@@ -23,6 +21,26 @@
 .userlist-container.userlist-open {
   opacity: 1;
   transform: translateY(0);
+}
+
+.userlist-container.userlist-top-right {
+  top: 30px;
+  right: 30px;
+}
+
+.userlist-container.userlist-bottom-right {
+  bottom: 30px;
+  right: 30px;
+}
+
+.userlist-container.userlist-bottom-left {
+  bottom: 30px;
+  left: 30px;
+}
+
+.userlist-container.userlist-top-left {
+  top: 30px;
+  left: 30px;
 }
 
 .userlist-container iframe {
