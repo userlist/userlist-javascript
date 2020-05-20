@@ -2,7 +2,7 @@
   all: initial;
 
   position: fixed;
-
+  z-index: 10000000;
   height: 0px;
   width: 400px;
 
