@@ -7,11 +7,11 @@ export default class Relation {
   create(attributes) {
     let resource = new this.resource(attributes);
 
-    this.client.post(this.endpoint, resource);
+    return this.client.post(this.endpoint, resource);
   }
 
   delete(identifier) {
-    this.client.delete(`${this.endpoint}/${identifier}`);
+    return this.client.delete(`${this.endpoint}/${identifier}`);
   }
 
   get client() {
