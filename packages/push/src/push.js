@@ -19,7 +19,7 @@ export default class Userlist {
     this.track = this.event;
   }
 
-  user(...args) { this.users.create(...args); }
-  company(...args) { this.companies.create(...args); }
-  event(...args) { this.events.create(...args); }
+  user(...args) { return this.users.create(...args); }
+  company(...args) { return this.companies.create(...args); }
+  event(...args) { return this.events.create(...args); }
 }
