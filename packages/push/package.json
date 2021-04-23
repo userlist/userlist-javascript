@@ -1,6 +1,6 @@
 {
   "name": "@userlist/push",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Node.js wrapper for the Userlist API",
   "keywords": [
     "userlist"
