@@ -6,7 +6,7 @@
   height: 0px;
   width: 400px;
 
-  max-height: calc(100vh - 60px);
+  max-height: calc(100vh - 100px);
 
   border-radius: 20px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -51,9 +51,10 @@
 
 @media only screen and (max-width: 460px) {
   .userlist-container {
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
 
     border-radius: 0;
     max-width: none;
