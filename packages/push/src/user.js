@@ -10,8 +10,8 @@ export default class User extends Resource {
       throw 'Missing required attributes object';
     }
 
-    if(attributes.identifier == null) {
-      throw 'Missing required attribute identifier';
+    if(attributes.identifier == null && attributes.email == null) {
+      throw 'Missing required attribute identifier or email';
     }
 
     super(attributes);

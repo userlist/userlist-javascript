@@ -10,10 +10,22 @@ describe('User', function() {
       }).to.throw('Missing required attributes object');
     });
 
-    it('should require an identifier', function() {
+    it('should require an identifier or email address', function() {
       expect(function() {
-        new User({ email: 'foo@example.com' });
-      }).to.throw('Missing required attribute identifier');
+        new User({ });
+      }).to.throw('Missing required attribute identifier or email');
+    });
+
+    it('should not raise an error when there is an identifier but no email address', function() {
+      expect(function() {
+        new User({ identifier: 'user-identifier' });
+      }).to.not.throw('Missing required attribute identifier or email');
+    });
+
+    it('should not raise an error when there is no identifier but an email address', function() {
+      expect(function() {
+        new User({ email: 'test@example.com' });
+      }).to.not.throw('Missing required attribute identifier or email');
     });
   });
 
