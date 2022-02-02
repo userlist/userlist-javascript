@@ -10,8 +10,8 @@ export default class Event extends Resource {
       throw 'Missing required attributes object';
     }
 
-    if(attributes.user == null) {
-      throw 'Missing required attribute user';
+    if(attributes.user == null && attributes.company == null) {
+      throw 'Missing required attribute user or company';
     }
 
     if(attributes.name == null) {
