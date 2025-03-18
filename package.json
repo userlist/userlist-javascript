@@ -2,16 +2,13 @@
   "name": "userlist-javascript",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.20.2"
+    "lerna": "^8.0.0"
   },
   "scripts": {
     "build": "lerna run build --stream --concurrency 1",
     "test": "lerna run test --stream --concurrency 1",
     "lint": "lerna run lint --stream --concurrency 1"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "resolutions": {
     "minimist": "^1.2.2"
   }
