@@ -5,9 +5,7 @@ export default class Relation {
   }
 
   push(attributes) {
-    let resource = new this.resource(attributes);
-
-    return this.client.post(this.endpoint, resource);
+    return this.client.post(this.endpoint, this.serialize(attributes));
   }
 
   create() {
@@ -18,8 +16,16 @@ export default class Relation {
     return this.push(...arguments);
   }
 
-  delete(identifier) {
-    return this.client.delete(`${this.endpoint}/${identifier}`);
+  delete(attributes) {
+    return this.client.delete(this.endpoint, this.serialize(attributes));
+  }
+
+  serialize(attributes) {
+    if (typeof attributes === "string") {
+      attributes = { identifier: attributes };
+    }
+
+    return new this.resource(attributes);
   }
 
   get client() {

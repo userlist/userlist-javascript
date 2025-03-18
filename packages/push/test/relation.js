@@ -100,7 +100,19 @@ describe("Relation", function () {
     it("should delete the resource using the scope's client", function () {
       relation.delete("1");
 
-      expect(client.delete).to.be.calledWithExactly("/users/1");
+      expect(client.delete).to.be.calledWithExactly(
+        "/users",
+        new User({ identifier: "1" })
+      );
+    });
+
+    it("should delete the resource using the scope's client", function () {
+      relation.delete({ identifier: "1", name: "John" });
+
+      expect(client.delete).to.be.calledWithExactly(
+        "/users",
+        new User({ identifier: "1", name: "John" })
+      );
     });
   });
 });
