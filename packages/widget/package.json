@@ -25,8 +25,8 @@
     "build": "rollup -c",
     "serve": "rollup -c rollup.serve.js",
     "test": "mocha --require ignore-styles --require test/helper --require @babel/register --recursive --colors",
-    "test:watch": "yarn test --watch",
-    "prepublish": "yarn lint && yarn test && yarn build"
+    "test:watch": "pnpm test --watch",
+    "prepublish": "pnpm lint && pnpm test && pnpm build"
   },
   "bugs": {
     "url": "https://github.com/userlistio/userlist-javascript/issues"
