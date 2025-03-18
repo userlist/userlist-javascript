@@ -35,16 +35,18 @@ USERLIST_PUSH_KEY=401e5c498be718c0a38b7da7f1ce5b409c56132a49246c435ee296e07bf2be
 Configuration via an constructor:
 
 ```javascript
-var Userlist = require('@userlist/push');
+var Userlist = require("@userlist/push");
 
-var userlist = new Userlist({ pushKey: '401e5c498be718c0a38b7da7f1ce5b409c56132a49246c435ee296e07bf2be39' });
+var userlist = new Userlist({
+  pushKey: "401e5c498be718c0a38b7da7f1ce5b409c56132a49246c435ee296e07bf2be39",
+});
 ```
 
 ## Usage
 
 ### Tracking Users
 
-To manually send user data into Userlist, use the `userlist.users.create` method.
+To manually send user data into Userlist, use the `userlist.users.create` or `userlist.users.push` method.
 
 ```javascript
 var userlist = new Userlist();
@@ -54,15 +56,32 @@ userlist.users.create({
   email: user.email,
   properties: {
     first_name: user.first_name,
-    last_name: user.last_name
-  }
+    last_name: user.last_name,
+  },
+});
+```
+
+To manually update a user data into Userlist, use the `userlist.users.update` method. Properties that aren't present in the payload are ignored and remain unchanged.
+
+```javascript
+var userlist = new Userlist();
+
+userlist.users.update({
+  identifier: user.id,
+  properties: {
+    last_name: user.last_name,
+  },
 });
 ```
 
 It's also possible to delete a user from Userlist, using the `userlist.users.delete` method.
 
 ```javascript
-userlist.users.delete(user.id)
+// With an identifier
+userlist.users.delete(user.id);
+
+// With an object
+userlist.users.delete({ identifier: user.id });
 ```
 
 ### Tracking Events
@@ -73,14 +92,13 @@ To track custom events use the `userlist.events.create` method.
 var userlist = new Userlist();
 
 userlist.events.create({
-  name: 'project_created',
+  name: "project_created",
   user: user.id,
   properties: {
-    project_name: project.name
-  }
-})
+    project_name: project.name,
+  },
+});
 ```
-
 
 ## Contributing
 
