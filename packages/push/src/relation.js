@@ -4,10 +4,18 @@ export default class Relation {
     this.resource = resource;
   }
 
-  create(attributes) {
+  push(attributes) {
     let resource = new this.resource(attributes);
 
     return this.client.post(this.endpoint, resource);
+  }
+
+  create() {
+    return this.push(...arguments);
+  }
+
+  update() {
+    return this.push(...arguments);
   }
 
   delete(identifier) {
