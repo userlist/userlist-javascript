@@ -40,8 +40,10 @@
     "@babel/register": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@eslint/js": "^9.22.0",
-    "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "builtin-modules": "^5.0.0",
     "chai": "^4.2.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.1.1",
@@ -54,8 +56,7 @@
     "mocha": "^7.1.1",
     "nock": "^12.0.3",
     "prettier": "^3.5.3",
-    "rollup": "^2.2.0",
-    "rollup-plugin-babel": "^4.4.0",
+    "rollup": "^4.0.0",
     "sinon": "^9.0.1",
     "sinon-chai": "^3.5.0"
   }
