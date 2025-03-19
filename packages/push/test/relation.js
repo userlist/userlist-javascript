@@ -114,18 +114,4 @@ describe("Relation", function () {
       );
     });
   });
-
-  describe("#normalize", function () {
-    it("should normalize a string into a new user object with an identifier", function () {
-      let normalized = relation.normalize("1");
-
-      expect(normalized).to.be.eql(new User({ identifier: "1" }));
-    });
-
-    it("should normalize an object into a new user with it's properties", function () {
-      let normalized = relation.normalize({ identifier: "1", name: "John" });
-
-      expect(normalized).to.be.eql(new User({ identifier: "1", name: "John" }));
-    });
-  });
 });
