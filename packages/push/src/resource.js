@@ -1,7 +1,9 @@
 export default class Resource {
   constructor(attributes = {}) {
-    for(let attribute in attributes) {
-      this[attribute] = attributes[attribute];
+    if (attributes == null || typeof attributes !== "object") {
+      throw "Missing required attributes object";
     }
+
+    Object.assign(this, attributes);
   }
 }
