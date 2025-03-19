@@ -1,4 +1,4 @@
-function decamelize(string, separator = '_'){
+function decamelize(string, separator = '_') {
   return string
     .replace(/([a-z\d])([A-Z])/g, `$1${separator}$2`)
     .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, `$1${separator}$2`)
@@ -14,18 +14,13 @@ export default class Config {
   constructor(configFromConstructor) {
     let { configFromDefault, configFromEnvironment } = this;
 
-    if(configFromConstructor instanceof Config) {
+    if (configFromConstructor instanceof Config) {
       configFromConstructor = configFromConstructor.config;
     }
 
-    this.config = Object.assign(
-      {},
-      configFromDefault,
-      configFromEnvironment,
-      configFromConstructor
-    );
+    this.config = Object.assign({}, configFromDefault, configFromEnvironment, configFromConstructor);
 
-    for(let key of this.configKeys) {
+    for (let key of this.configKeys) {
       Object.defineProperty(this, key, {
         set(value) {
           this.config[key] = value;
@@ -33,8 +28,8 @@ export default class Config {
 
         get() {
           return this.config[key];
-        }
-      })
+        },
+      });
     }
   }
 
@@ -47,12 +42,12 @@ export default class Config {
   }
 
   get configFromEnvironment() {
-    let config = {}
+    let config = {};
 
-    for(let key of this.configKeys) {
+    for (let key of this.configKeys) {
       let value = process.env[`USERLIST_${decamelize(key).toUpperCase()}`];
 
-      if(typeof value !== 'undefined') {
+      if (typeof value !== 'undefined') {
         config[key] = value;
       }
     }

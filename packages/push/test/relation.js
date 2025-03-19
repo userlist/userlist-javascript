@@ -1,14 +1,14 @@
-import { expect, use } from "chai";
-import { createStubInstance } from "sinon";
-import sinonChai from "sinon-chai";
+import { expect, use } from 'chai';
+import { createStubInstance } from 'sinon';
+import sinonChai from 'sinon-chai';
 
 use(sinonChai);
 
-import Relation from "../src/relation";
-import User from "../src/user";
-import Client from "../src/client";
+import Relation from '../src/relation';
+import User from '../src/user';
+import Client from '../src/client';
 
-describe("Relation", function () {
+describe('Relation', function () {
   let resource = User;
   let scope = {};
 
@@ -25,10 +25,10 @@ describe("Relation", function () {
   it("should throw the resource's validation errors", function () {
     expect(function () {
       relation.create();
-    }).to.throw("Missing required attributes object");
+    }).to.throw('Missing required attributes object');
   });
 
-  describe("#create", function () {
+  describe('#create', function () {
     let client = createStubInstance(Client);
 
     beforeEach(function () {
@@ -37,31 +37,31 @@ describe("Relation", function () {
 
     it("should post the resource using the scope's client", function () {
       relation.create({
-        identifier: "1",
-        name: "John",
-        email: "john@userlist.com",
+        identifier: '1',
+        name: 'John',
+        email: 'john@userlist.com',
         properties: {
-          foo: "bar",
-          bar: "baz",
+          foo: 'bar',
+          bar: 'baz',
         },
       });
 
       expect(client.post).to.be.calledWithExactly(
-        "/users",
+        '/users',
         new User({
-          identifier: "1",
-          name: "John",
-          email: "john@userlist.com",
+          identifier: '1',
+          name: 'John',
+          email: 'john@userlist.com',
           properties: {
-            foo: "bar",
-            bar: "baz",
+            foo: 'bar',
+            bar: 'baz',
           },
         })
       );
     });
   });
 
-  describe("#push", function () {
+  describe('#push', function () {
     let client = createStubInstance(Client);
 
     beforeEach(function () {
@@ -69,16 +69,13 @@ describe("Relation", function () {
     });
 
     it("should post the resource using the scope's client", function () {
-      relation.push({ identifier: "1" });
+      relation.push({ identifier: '1' });
 
-      expect(client.post).to.be.calledWithExactly(
-        "/users",
-        new User({ identifier: "1" })
-      );
+      expect(client.post).to.be.calledWithExactly('/users', new User({ identifier: '1' }));
     });
   });
 
-  describe("#update", function () {
+  describe('#update', function () {
     let client = createStubInstance(Client);
 
     beforeEach(function () {
@@ -86,32 +83,23 @@ describe("Relation", function () {
     });
 
     it("should post the resource using the scope's client", function () {
-      relation.update({ identifier: "1" });
+      relation.update({ identifier: '1' });
 
-      expect(client.post).to.be.calledWithExactly(
-        "/users",
-        new User({ identifier: "1" })
-      );
+      expect(client.post).to.be.calledWithExactly('/users', new User({ identifier: '1' }));
     });
   });
 
-  describe("#delete", function () {
+  describe('#delete', function () {
     it("should delete the resource using the scope's client", function () {
-      relation.delete("1");
+      relation.delete('1');
 
-      expect(client.delete).to.be.calledWithExactly(
-        "/users",
-        new User({ identifier: "1" })
-      );
+      expect(client.delete).to.be.calledWithExactly('/users', new User({ identifier: '1' }));
     });
 
     it("should delete the resource using the scope's client", function () {
-      relation.delete({ identifier: "1", name: "John" });
+      relation.delete({ identifier: '1', name: 'John' });
 
-      expect(client.delete).to.be.calledWithExactly(
-        "/users",
-        new User({ identifier: "1", name: "John" })
-      );
+      expect(client.delete).to.be.calledWithExactly('/users', new User({ identifier: '1', name: 'John' }));
     });
   });
 });
