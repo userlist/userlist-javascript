@@ -12,6 +12,7 @@ import User from "../src/user";
 import Event from "../src/event";
 import Company from "../src/company";
 import Relationship from "../src/relationship";
+import Message from "../src/message";
 
 describe("Userlist", function () {
   let userlist;
@@ -42,6 +43,11 @@ describe("Userlist", function () {
   it("should have a relationships relation", function () {
     expect(userlist.relationships).to.be.an.instanceOf(Relation);
     expect(userlist.relationships.resource).to.eq(Relationship);
+  });
+
+  it("should have a messages relation", function () {
+    expect(userlist.messages).to.be.an.instanceOf(Relation);
+    expect(userlist.messages.resource).to.eq(Message);
   });
 
   it("should delegate the user method to users.push", function () {
@@ -75,6 +81,20 @@ describe("Userlist", function () {
     expect(userlist.relationships.push).calledOnceWith({
       user: "user-1",
       company: "company-1",
+    });
+  });
+
+  it("should delegate the message method to messages.push", function () {
+    userlist.messages.push = spy();
+    userlist.message({
+      user: "user-1",
+      template: "welcome",
+      properties: { name: "John" },
+    });
+    expect(userlist.messages.push).calledOnceWith({
+      user: "user-1",
+      template: "welcome",
+      properties: { name: "John" },
     });
   });
 

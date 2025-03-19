@@ -6,6 +6,7 @@ import User from "./user";
 import Company from "./company";
 import Relationship from "./relationship";
 import Event from "./event";
+import Message from "./message";
 
 export default class Userlist {
   constructor(config = {}) {
@@ -16,6 +17,7 @@ export default class Userlist {
     this.companies = new Relation(this, Company);
     this.relationships = new Relation(this, Relationship);
     this.events = new Relation(this, Event);
+    this.messages = new Relation(this, Message);
 
     this.identify = this.user;
     this.track = this.event;
@@ -35,5 +37,9 @@ export default class Userlist {
 
   event() {
     return this.events.push(...arguments);
+  }
+
+  message() {
+    return this.messages.push(...arguments);
   }
 }
