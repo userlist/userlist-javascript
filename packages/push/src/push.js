@@ -1,12 +1,12 @@
-import Relation from "./relation";
-import Client from "./client";
-import Config from "./config";
+import Relation from './relation';
+import Client from './client';
+import Config from './config';
 
-import User from "./user";
-import Company from "./company";
-import Relationship from "./relationship";
-import Event from "./event";
-import Message from "./message";
+import User from './user';
+import Company from './company';
+import Relationship from './relationship';
+import Event from './event';
+import Message from './message';
 
 export default class Userlist {
   constructor(config = {}) {

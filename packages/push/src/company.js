@@ -1,21 +1,21 @@
-import Resource from "./resource";
+import Resource from './resource';
 
 export default class Company extends Resource {
   static get endpoint() {
-    return "/companies";
+    return '/companies';
   }
 
   constructor(attributes) {
-    if (typeof attributes === "string") {
+    if (typeof attributes === 'string') {
       attributes = { identifier: attributes };
     }
 
-    if (attributes == null || typeof attributes !== "object") {
-      throw "Missing required attributes object";
+    if (attributes == null || typeof attributes !== 'object') {
+      throw 'Missing required attributes object';
     }
 
     if (attributes.identifier == null) {
-      throw "Missing required attribute identifier";
+      throw 'Missing required attribute identifier';
     }
 
     super(attributes);
