@@ -6,7 +6,7 @@ export default class Relationship extends Resource {
   }
 
   constructor(attributes) {
-    if (attributes == null) {
+    if (attributes == null || typeof attributes !== "object") {
       throw "Missing required attributes object";
     }
 

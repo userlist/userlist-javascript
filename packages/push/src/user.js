@@ -10,7 +10,7 @@ export default class User extends Resource {
       attributes = { identifier: attributes };
     }
 
-    if (attributes == null) {
+    if (attributes == null || typeof attributes !== "object") {
       throw "Missing required attributes object";
     }
 
