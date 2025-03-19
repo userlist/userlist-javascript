@@ -6,6 +6,10 @@ export default class Company extends Resource {
   }
 
   constructor(attributes) {
+    if (typeof attributes === "string") {
+      attributes = { identifier: attributes };
+    }
+
     if (attributes == null) {
       throw "Missing required attributes object";
     }
