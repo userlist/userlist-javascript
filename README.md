@@ -20,7 +20,7 @@ The package is available as open source under the terms of the [MIT License](htt
 
 ## Code of Conduct
 
-Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/userlist/userlist-javascript/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/userlist/userlist-javascript/blob/main/CODE_OF_CONDUCT.md).
 
 ## What is Userlist?
 
