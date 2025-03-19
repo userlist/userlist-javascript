@@ -46,12 +46,12 @@ var userlist = new Userlist({
 
 ### Tracking Users
 
-To manually send user data into Userlist, use the `userlist.users.create` or `userlist.users.push` method.
+To send user data into Userlist, use the `userlist.users.push` method. This method will create a new user if the user doesn't exist yet, or update the existing user if it does. Properties that aren't present in the payload are ignored and remain unchanged.
 
 ```javascript
 var userlist = new Userlist();
 
-userlist.users.create({
+userlist.users.push({
   identifier: user.id,
   email: user.email,
   properties: {
@@ -61,37 +61,43 @@ userlist.users.create({
 });
 ```
 
-To manually update a user data into Userlist, use the `userlist.users.update` method. Properties that aren't present in the payload are ignored and remain unchanged.
+It's also possible to delete a user from Userlist, using the `userlist.users.delete` method.
+
+```javascript
+userlist.users.delete({ identifier: user.id, email: user.email });
+```
+
+### Tracking Companies
+
+To send company data into Userlist, use the `userlist.companies.push` method. This method will create a new company if the company doesn't exist yet, or update the existing company if it does. Properties that aren't present in the payload are ignored and remain unchanged.
 
 ```javascript
 var userlist = new Userlist();
 
-userlist.users.update({
-  identifier: user.id,
+userlist.companies.push({
+  identifier: company.id,
+  name: company.name,
   properties: {
-    last_name: user.last_name,
+    plan: company.plan,
+    trial_ends_at: company.trial_ends_at,
   },
 });
 ```
 
-It's also possible to delete a user from Userlist, using the `userlist.users.delete` method.
+It's also possible to delete a company from Userlist, using the `userlist.companies.delete` method.
 
 ```javascript
-// With an identifier
-userlist.users.delete(user.id);
-
-// With an object
-userlist.users.delete({ identifier: user.id });
+userlist.companies.delete({ identifier: company.id });
 ```
 
 ### Tracking Events
 
-To track custom events use the `userlist.events.create` method.
+To track custom events use the `userlist.events.push` method.
 
 ```javascript
 var userlist = new Userlist();
 
-userlist.events.create({
+userlist.events.push({
   name: "project_created",
   user: user.id,
   properties: {
