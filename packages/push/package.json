@@ -6,7 +6,7 @@
     "userlist"
   ],
   "author": "Benedikt Deicke <benedikt@userlist.com>",
-  "homepage": "https://github.com/userlistio/userlist-javascript/tree/master/packages/push",
+  "homepage": "https://github.com/userlist/userlist-javascript/tree/main/packages/push",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/userlistio/userlist-javascript.git"
+    "url": "git+https://github.com/userlist/userlist-javascript.git"
   },
   "scripts": {
     "lint": "eslint src test",
@@ -31,7 +31,7 @@
     "prepublish": "pnpm lint && pnpm test && pnpm build"
   },
   "bugs": {
-    "url": "https://github.com/userlistio/userlist-javascript/issues"
+    "url": "https://github.com/userlist/userlist-javascript/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -2,7 +2,7 @@
 
 This package helps with integrating [Userlist](http://userlist.com) into Node.js applications for _server side tracking_.
 
-> For client side tracking, please use [@userlist/web](https://github.com/userlist/userlist-javascript/tree/master/packages/web).
+> For client side tracking, please use [@userlist/web](https://github.com/userlist/userlist-javascript/tree/main/packages/web).
 
 ## Installation
 
@@ -147,7 +147,7 @@ The package is available as open source under the terms of the [MIT License](htt
 
 ## Code of Conduct
 
-Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/userlist/userlist-javascript/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/userlist/userlist-javascript/blob/main/CODE_OF_CONDUCT.md).
 
 ## What is Userlist?
 
