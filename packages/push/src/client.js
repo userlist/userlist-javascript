@@ -1,30 +1,30 @@
-import http from 'http';
-import https from 'https';
+import http from "http";
+import https from "https";
 
-import Config from './config';
+import Config from "./config";
 
 function performRequest(method, url, headers, payload) {
-  let isTLS = url.protocol === 'https:';
+  let isTLS = url.protocol === "https:";
   let client = isTLS ? https : http;
 
   let options = {
     method,
     hostname: url.host,
-    port: url.port !== '' ? url.port : (isTLS ? 443 : 80),
+    port: url.port !== "" ? url.port : isTLS ? 443 : 80,
     path: url.pathname,
-    headers: headers
-  }
+    headers: headers,
+  };
 
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     let request = client.request(options, (response) => {
       resolve(response);
     });
 
-    request.on('error', (error) => {
+    request.on("error", (error) => {
       reject(error);
     });
 
-    if(payload) {
+    if (payload) {
       request.write(JSON.stringify(payload));
     }
 
@@ -38,19 +38,19 @@ export default class Client {
   }
 
   get(endpoint) {
-    return this._request('GET', endpoint);
+    return this._request("GET", endpoint);
   }
 
   put(endpoint, payload) {
-    return this._request('PUT', endpoint, payload);
+    return this._request("PUT", endpoint, payload);
   }
 
   post(endpoint, payload) {
-    return this._request('POST', endpoint, payload);
+    return this._request("POST", endpoint, payload);
   }
 
-  delete(endpoint) {
-    return this._request('DELETE', endpoint);
+  delete(endpoint, payload) {
+    return this._request("DELETE", endpoint, payload);
   }
 
   _request(method, endpoint, payload) {
@@ -58,10 +58,10 @@ export default class Client {
 
     let url = new URL(endpoint, pushEndpoint);
     let headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': `Push ${pushKey}`
-    }
+      Accept: "application/json",
+      "Content-Type": "application/json; charset=UTF-8",
+      Authorization: `Push ${pushKey}`,
+    };
 
     return performRequest(method, url, headers, payload);
   }
