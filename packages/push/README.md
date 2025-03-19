@@ -90,6 +90,31 @@ It's also possible to delete a company from Userlist, using the `userlist.compan
 userlist.companies.delete({ identifier: company.id });
 ```
 
+### Tracking Relationships
+
+To create or update relationships between users and companies, use the `userlist.relationships.push` method. You need to specify both the user and company identifiers.
+
+```javascript
+var userlist = new Userlist();
+
+userlist.relationships.push({
+  user: user.id,
+  company: company.id,
+  properties: {
+    role: "admin",
+  },
+});
+```
+
+It's also possible to delete a relationship using the `userlist.relationships.delete` method.
+
+```javascript
+userlist.relationships.delete({
+  user: user.id,
+  company: company.id,
+});
+```
+
 ### Tracking Events
 
 To track custom events use the `userlist.events.push` method.
@@ -100,6 +125,22 @@ var userlist = new Userlist();
 userlist.events.push({
   name: "project_created",
   user: user.id,
+  properties: {
+    project_name: project.name,
+  },
+});
+```
+
+### Sending Messages
+
+To send messages to your users, use the `userlist.messages.push` method. You can specify the user, template name, and any properties needed for the message template.
+
+```javascript
+var userlist = new Userlist();
+
+userlist.messages.push({
+  user: user.id,
+  template: "welcome_message",
   properties: {
     project_name: project.name,
   },
