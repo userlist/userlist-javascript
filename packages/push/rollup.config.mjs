@@ -1,9 +1,9 @@
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import builtins from 'builtin-modules'
 
-import pkg from './package.json';
+import pkg from './package.json' with { type: "json" };
 
 export default {
   input: 'src/push.js',
@@ -23,7 +23,8 @@ export default {
     }),
     commonjs(),
     babel({
-      runtimeHelpers: true
+      babelHelpers: 'runtime',
+      plugins: ['@babel/plugin-transform-runtime'],
     })
   ],
   external: builtins,
