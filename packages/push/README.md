@@ -35,9 +35,9 @@ USERLIST_PUSH_KEY=401e5c498be718c0a38b7da7f1ce5b409c56132a49246c435ee296e07bf2be
 Configuration via an constructor:
 
 ```javascript
-var Userlist = require("@userlist/push");
+import Userlist from "@userlist/push";
 
-var userlist = new Userlist({
+const userlist = new Userlist({
   pushKey: "401e5c498be718c0a38b7da7f1ce5b409c56132a49246c435ee296e07bf2be39",
 });
 ```
@@ -49,8 +49,6 @@ var userlist = new Userlist({
 To send user data into Userlist, use the `userlist.users.push` method. This method will create a new user if the user doesn't exist yet, or update the existing user if it does. Properties that aren't present in the payload are ignored and remain unchanged.
 
 ```javascript
-var userlist = new Userlist();
-
 userlist.users.push({
   identifier: user.id,
   email: user.email,
@@ -72,8 +70,6 @@ userlist.users.delete({ identifier: user.id, email: user.email });
 To send company data into Userlist, use the `userlist.companies.push` method. This method will create a new company if the company doesn't exist yet, or update the existing company if it does. Properties that aren't present in the payload are ignored and remain unchanged.
 
 ```javascript
-var userlist = new Userlist();
-
 userlist.companies.push({
   identifier: company.id,
   name: company.name,
@@ -95,8 +91,6 @@ userlist.companies.delete({ identifier: company.id });
 To create or update relationships between users and companies, use the `userlist.relationships.push` method. You need to specify both the user and company identifiers.
 
 ```javascript
-var userlist = new Userlist();
-
 userlist.relationships.push({
   user: user.id,
   company: company.id,
@@ -120,8 +114,6 @@ userlist.relationships.delete({
 To track custom events use the `userlist.events.push` method.
 
 ```javascript
-var userlist = new Userlist();
-
 userlist.events.push({
   name: "project_created",
   user: user.id,
@@ -136,8 +128,6 @@ userlist.events.push({
 To send messages to your users, use the `userlist.messages.push` method. You can specify the user, template name, and any properties needed for the message template.
 
 ```javascript
-var userlist = new Userlist();
-
 userlist.messages.push({
   user: user.id,
   template: "welcome_message",
