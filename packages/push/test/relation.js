@@ -4,9 +4,9 @@ import sinonChai from 'sinon-chai';
 
 use(sinonChai);
 
-import Relation from '../src/relation';
-import User from '../src/user';
-import Client from '../src/client';
+import Relation from '../src/relation.js';
+import User from '../src/user.js';
+import Client from '../src/client.js';
 
 describe('Relation', function () {
   let resource = User;

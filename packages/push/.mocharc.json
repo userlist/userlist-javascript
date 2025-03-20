@@ -1,0 +1,7 @@
+{
+  "extension": ["js"],
+  "package": "./package.json",
+  "require": "@babel/register",
+  "recursive": true,
+  "colors": true
+}
