@@ -8,11 +8,7 @@ const plugins = [
   resolve({
     browser: true
   }),
-  commonjs({
-    namedExports: {
-      '@rails/actioncable': ['createConsumer']
-    }
-  }),
+  commonjs(),
   babel({
     babelHelpers: 'runtime'
   })
