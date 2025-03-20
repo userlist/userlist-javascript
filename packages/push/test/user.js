@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import User from '../src/user';
+import User from '../src/user.js';
 
 describe('User', function () {
   describe('validations', function () {

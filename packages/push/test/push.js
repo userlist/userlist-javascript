@@ -5,14 +5,14 @@ import sinonChai from 'sinon-chai';
 
 use(sinonChai);
 
-import Userlist from '../src/push';
-import Relation from '../src/relation';
+import Userlist from '../src/push.js';
+import Relation from '../src/relation.js';
 
-import User from '../src/user';
-import Event from '../src/event';
-import Company from '../src/company';
-import Relationship from '../src/relationship';
-import Message from '../src/message';
+import User from '../src/user.js';
+import Event from '../src/event.js';
+import Company from '../src/company.js';
+import Relationship from '../src/relationship.js';
+import Message from '../src/message.js';
 
 describe('Userlist', function () {
   let userlist;

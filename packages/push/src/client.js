@@ -1,7 +1,7 @@
 import http from 'http';
 import https from 'https';
 
-import Config from './config';
+import Config from '../src/config.js';
 
 function performRequest(method, url, headers, payload) {
   let isTLS = url.protocol === 'https:';
@@ -19,6 +19,8 @@ function performRequest(method, url, headers, payload) {
     let request = client.request(options, (response) => {
       resolve(response);
     });
+
+    request.useChunkedEncodingByDefault = true;
 
     request.on('error', (error) => {
       reject(error);

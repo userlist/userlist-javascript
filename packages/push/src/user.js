@@ -1,4 +1,4 @@
-import Resource from './resource';
+import Resource from './resource.js';
 
 export default class User extends Resource {
   static get endpoint() {

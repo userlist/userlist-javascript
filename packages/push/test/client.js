@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import Client from '../src/client';
+import Client from '../src/client.js';
 
 describe('Client', function () {
   let client,
@@ -49,9 +49,9 @@ describe('Client', function () {
 
   describe('.delete', function () {
     it('should send the correct request', async function () {
-      scope.delete('/users/1', { identifier: 'node-identifier' }).reply(202);
+      scope.delete('/users', { identifier: 'node-identifier' }).reply(202);
 
-      await client.delete('/users/1', { identifier: 'node-identifier' });
+      await client.delete('/users', { identifier: 'node-identifier' });
     });
   });
 });

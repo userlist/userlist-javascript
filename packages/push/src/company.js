@@ -1,4 +1,4 @@
-import Resource from './resource';
+import Resource from './resource.js';
 
 export default class Company extends Resource {
   static get endpoint() {
