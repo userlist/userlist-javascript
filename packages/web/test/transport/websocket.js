@@ -1,37 +1,39 @@
 import { expect } from 'chai';
 
-import { WebsocketTransport, StaticTokenProvider } from '../../src/index';
-import ActionCableMock from '../support/action_cable_mock';
+import { WebsocketTransport, StaticTokenProvider } from '../../src/index.js';
+import ActionCableMock from '../support/action_cable_mock.js';
 
-describe('WebsocketTransport', function() {
+describe('WebsocketTransport', function () {
   let server, transport, tokenProvider;
 
-  beforeEach(function() {
+  beforeEach(function () {
     server = new ActionCableMock();
     tokenProvider = new StaticTokenProvider('static-token');
   });
 
-  afterEach(function() {
+  afterEach(function () {
     server.close();
     transport.close();
   });
 
-  it('connects to the server', function(done) {
-    server.on('connection', () => { done(); });
-
-    transport = new WebsocketTransport(tokenProvider, server.url);
-  });
-
-  it('subscribes to the correct channel server', function(done) {
-    server.on('subscription', (payload) => {
-      expect(payload.identifier).to.equal("{\"channel\":\"Widget::MessagingChannel\",\"token\":\"static-token\"}")
+  it('connects to the server', function (done) {
+    server.on('connection', () => {
       done();
     });
 
     transport = new WebsocketTransport(tokenProvider, server.url);
   });
 
-  it('sends the identify call', function(done) {
+  it('subscribes to the correct channel server', function (done) {
+    server.on('subscription', (payload) => {
+      expect(payload.identifier).to.equal('{"channel":"Widget::MessagingChannel","token":"static-token"}');
+      done();
+    });
+
+    transport = new WebsocketTransport(tokenProvider, server.url);
+  });
+
+  it('sends the identify call', function (done) {
     server.on('message', (payload) => {
       expect(payload.data.action).to.equal('identify');
       expect(payload.data.email).to.equal('foo@example.com');
@@ -43,7 +45,7 @@ describe('WebsocketTransport', function() {
     transport.identify({ email: 'foo@example.com', properties: { foo: 42 } });
   });
 
-  it('sends the track call', function(done) {
+  it('sends the track call', function (done) {
     server.on('message', (payload) => {
       expect(payload.data.action).to.equal('track');
       expect(payload.data.name).to.equal('event-name');
@@ -55,9 +57,11 @@ describe('WebsocketTransport', function() {
     transport.track('event-name', { foo: 42 });
   });
 
-  it('receives messages from the server', function(done) {
+  it('receives messages from the server', function (done) {
     server.on('subscription', (payload, socket) => {
-      socket.send(JSON.stringify({ identifier: payload.identifier, message: { data: { type: 'messages', id: 'message-id' } } }));
+      socket.send(
+        JSON.stringify({ identifier: payload.identifier, message: { data: { type: 'messages', id: 'message-id' } } })
+      );
     });
 
     transport = new WebsocketTransport(tokenProvider, server.url);
@@ -67,9 +71,14 @@ describe('WebsocketTransport', function() {
     });
   });
 
-  it('receives config from the server', function(done) {
+  it('receives config from the server', function (done) {
     server.on('subscription', (payload, socket) => {
-      socket.send(JSON.stringify({ identifier: payload.identifier, message: { data: { type: 'configurations', id: 'config-id' } } }));
+      socket.send(
+        JSON.stringify({
+          identifier: payload.identifier,
+          message: { data: { type: 'configurations', id: 'config-id' } },
+        })
+      );
     });
 
     transport = new WebsocketTransport(tokenProvider, server.url);
@@ -79,7 +88,7 @@ describe('WebsocketTransport', function() {
     });
   });
 
-  it('receives data from the server', function(done) {
+  it('receives data from the server', function (done) {
     server.on('subscription', (payload, socket) => {
       socket.send(JSON.stringify({ identifier: payload.identifier, message: { foo: 'bar' } }));
     });

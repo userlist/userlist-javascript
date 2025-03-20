@@ -2,54 +2,54 @@ import { expect, use } from 'chai';
 import { createStubInstance } from 'sinon';
 import sinonChai from 'sinon-chai';
 
-use(sinonChai)
+use(sinonChai);
 
-import { Userlist, NullTransport, WidgetTransport, StaticTokenProvider } from '../src/index';
+import { Userlist, NullTransport, WidgetTransport, StaticTokenProvider } from '../src/index.js';
 
-describe('Userlist', function() {
+describe('Userlist', function () {
   let transport, userlist, tokenProvider;
 
-  beforeEach(function() {
+  beforeEach(function () {
     transport = createStubInstance(NullTransport);
     tokenProvider = new StaticTokenProvider('token');
     userlist = new Userlist({ transport, tokenProvider });
   });
 
-  afterEach(function() {
+  afterEach(function () {
     userlist.close();
   });
 
-  describe('constructor', function() {
-    beforeEach(function() {
+  describe('constructor', function () {
+    beforeEach(function () {
       userlist = new Userlist('static-token');
     });
 
-    it('should use a default transport', function() {
+    it('should use a default transport', function () {
       expect(userlist.transport).to.be.instanceof(WidgetTransport);
     });
 
-    it('should use a default token provider', function() {
+    it('should use a default token provider', function () {
       expect(userlist.tokenProvider).to.be.instanceof(StaticTokenProvider);
     });
 
-    it('should use the given token', async function() {
+    it('should use the given token', async function () {
       let token = await userlist.tokenProvider.receiveToken();
 
       expect(token).to.equal('static-token');
     });
   });
 
-  describe('#identify', function() {
-    it('should transmit the given properties', async function() {
+  describe('#identify', function () {
+    it('should transmit the given properties', async function () {
       await userlist.identify();
-      expect(transport.identify).calledOnce
+      expect(transport.identify).calledOnce;
     });
   });
 
-  describe('#track', function() {
-    it('should transmit the given properties', async function() {
+  describe('#track', function () {
+    it('should transmit the given properties', async function () {
       await userlist.track();
-      expect(transport.track).calledOnce
+      expect(transport.track).calledOnce;
     });
   });
 });

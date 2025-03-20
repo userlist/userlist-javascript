@@ -1,17 +1,17 @@
-import { Server } from 'ws';
+import { WebSocketServer } from 'ws';
 
-import EventEmitter from '../../src/utils/event_emitter';
+import EventEmitter from '../../src/utils/event_emitter.js';
 
 export default class ActionCableMock extends EventEmitter {
   constructor() {
     super(...arguments);
 
-    this.server = new Server({ port: 0 });
+    this.server = new WebSocketServer({ port: 0 });
     this.server.on('connection', (socket) => {
       socket.on('message', (message) => {
         let payload = JSON.parse(message);
 
-        if(payload.command == 'message') {
+        if (payload.command == 'message') {
           payload.data = JSON.parse(payload.data);
           this.emit('message', payload, socket);
         } else if (payload.command == 'subscribe') {

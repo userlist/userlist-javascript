@@ -1,7 +1,7 @@
-import EventEmitter from '../utils/event_emitter';
-import { extractMessageId } from '../utils/message';
-
 import { createConsumer } from '@rails/actioncable';
+
+import EventEmitter from '../utils/event_emitter.js';
+import { extractMessageId } from '../utils/message.js';
 
 export default class WebsocketTransport extends EventEmitter {
   constructor(tokenProvider, endpoint = 'wss://api.widget.userlist.com/cable') {
@@ -40,43 +40,45 @@ export default class WebsocketTransport extends EventEmitter {
   }
 
   _createSubscription() {
-    return this._subscription = this._subscription || (async () => {
-      let consumer = this._consumer;
-      let queue = this._queue;
-      let transport = this;
-      let params = {
-        channel: 'Widget::MessagingChannel',
-        token: await this._tokenProvider.receiveToken(),
-      };
+    return (this._subscription =
+      this._subscription ||
+      (async () => {
+        let consumer = this._consumer;
+        let queue = this._queue;
+        let transport = this;
+        let params = {
+          channel: 'Widget::MessagingChannel',
+          token: await this._tokenProvider.receiveToken(),
+        };
 
-      let subscription = consumer.subscriptions.create(params, {
-        connected() {
-          while(queue.length > 0) {
-            this.send(queue.shift());
-          }
-        },
+        let subscription = consumer.subscriptions.create(params, {
+          connected() {
+            while (queue.length > 0) {
+              this.send(queue.shift());
+            }
+          },
 
-        received(payload) {
-          let type = payload && payload.data && payload.data.type;
+          received(payload) {
+            let type = payload && payload.data && payload.data.type;
 
-          if(type === 'messages') {
-            transport.emit('message', payload);
-          } else if(type === 'configurations') {
-            transport.emit('config', payload);
-          } else {
-            transport.emit('data', payload);
-          }
-        }
-      });
+            if (type === 'messages') {
+              transport.emit('message', payload);
+            } else if (type === 'configurations') {
+              transport.emit('config', payload);
+            } else {
+              transport.emit('data', payload);
+            }
+          },
+        });
 
-      return subscription;
-    })();
+        return subscription;
+      })());
   }
 
   async _perform(action, data) {
     let subscription = await this._createSubscription();
 
-    if(this._connection.isOpen()) {
+    if (this._connection.isOpen()) {
       subscription.perform(action, data);
     } else {
       this._queue.push({ ...data, action });

@@ -1,5 +1,5 @@
-import EventEmitter from '../utils/event_emitter';
-import { extractMessageId } from '../utils/message';
+import EventEmitter from '../utils/event_emitter.js';
+import { extractMessageId } from '../utils/message.js';
 
 export default class WidgetTransport extends EventEmitter {
   constructor(widget) {

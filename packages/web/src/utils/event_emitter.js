@@ -4,7 +4,7 @@ export default class EventEmitter {
   }
 
   on(eventName, callback) {
-    if(!this._callbacks[eventName]) {
+    if (!this._callbacks[eventName]) {
       this._callbacks[eventName] = [];
     }
 
@@ -14,8 +14,8 @@ export default class EventEmitter {
   emit(eventName, ...args) {
     let callbacks = this._callbacks[eventName];
 
-    if(callbacks) {
-      for(let callback of callbacks) {
+    if (callbacks) {
+      for (let callback of callbacks) {
         callback(...args);
       }
     }

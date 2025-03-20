@@ -1,26 +1,26 @@
-import NullTransport from './transport/null';
-import WebsocketTransport from './transport/websocket';
-import WidgetTransport from './transport/widget';
-import StaticTokenProvider from './token_provider/static';
-import PromiseTokenProvider from './token_provider/promise';
+import NullTransport from './transport/null.js';
+import WebsocketTransport from './transport/websocket.js';
+import WidgetTransport from './transport/widget.js';
+import StaticTokenProvider from './token_provider/static.js';
+import PromiseTokenProvider from './token_provider/promise.js';
 
 import { Widget } from '@userlist/widget';
 
 class Userlist {
   constructor(options = {}) {
-    if(typeof options === 'string') {
+    if (typeof options === 'string') {
       options = { tokenProvider: new StaticTokenProvider(options) };
-    } else if(typeof options.then === 'function') {
+    } else if (typeof options.then === 'function') {
       options = { tokenProvider: new PromiseTokenProvider(options) };
-    } else if(typeof options === 'object' && typeof options.token === 'string') {
+    } else if (typeof options === 'object' && typeof options.token === 'string') {
       options.tokenProvider = new StaticTokenProvider(options.token);
     }
 
     this.tokenProvider = options.tokenProvider;
 
-    if(options.widget !== false) {
-      if(typeof options.widget === 'string' || typeof options.widget === 'object') {
-        this.widget = new Widget(this.tokenProvider, options.widget)
+    if (options.widget !== false) {
+      if (typeof options.widget === 'string' || typeof options.widget === 'object') {
+        this.widget = new Widget(this.tokenProvider, options.widget);
       } else {
         this.widget = new Widget(this.tokenProvider);
       }
@@ -60,7 +60,7 @@ class Userlist {
   }
 
   destroy() {
-    if(this.widget) {
+    if (this.widget) {
       this.widget.destroy();
     }
 
@@ -68,13 +68,4 @@ class Userlist {
   }
 }
 
-export {
-  Userlist,
-
-  NullTransport,
-  WebsocketTransport,
-  WidgetTransport,
-
-  StaticTokenProvider,
-  PromiseTokenProvider
-};
+export { Userlist, NullTransport, WebsocketTransport, WidgetTransport, StaticTokenProvider, PromiseTokenProvider };

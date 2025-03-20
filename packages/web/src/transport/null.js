@@ -1,4 +1,4 @@
-import EventEmitter from '../utils/event_emitter';
+import EventEmitter from '../utils/event_emitter.js';
 
 export default class NullTransport extends EventEmitter {
   async identify() {}
