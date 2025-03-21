@@ -1,4 +1,4 @@
-import Resource from './resource.js';
+import Resource from './resource';
 
 export default class Event extends Resource {
   static get endpoint() {

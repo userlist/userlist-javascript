@@ -4,7 +4,7 @@ import mocha from 'rollup-plugin-mocha';
 
 export default {
   input: {
-    include: ['test/index.js', 'test/channel.js'],
+    include: ['test/**/*.js'],
   },
   output: {
     file: 'tmp/test.cjs',

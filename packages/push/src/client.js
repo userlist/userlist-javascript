@@ -1,7 +1,7 @@
 import http from 'http';
 import https from 'https';
 
-import Config from '../src/config.js';
+import Config from '../src/config';
 
 function performRequest(method, url, headers, payload) {
   let isTLS = url.protocol === 'https:';
