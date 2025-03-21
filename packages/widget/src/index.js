@@ -1,5 +1,5 @@
 import Channel from './channel';
-import styles from './styles.css';
+import styles from './styles.css' with { type: 'css' };
 
 function createWidget(widgetURI) {
   let body = document.body;
@@ -29,7 +29,7 @@ class Widget {
 
     this.connectChannel().then((channel) => {
       channel.on('resize', (dimensions) => {
-        if(dimensions.height > 0) {
+        if (dimensions.height > 0) {
           this.resize(dimensions);
           this.open();
         } else {
@@ -46,13 +46,15 @@ class Widget {
   }
 
   connectChannel() {
-    return this._connectChannel = this._connectChannel || Channel.listen(window).then((channel) => {
-      return this.tokenProvider.receiveToken().then((token) => {
-        channel.postMessage('init', { token });
+    return (this._connectChannel =
+      this._connectChannel ||
+      Channel.listen(window).then((channel) => {
+        return this.tokenProvider.receiveToken().then((token) => {
+          channel.postMessage('init', { token });
 
-        return channel;
-      });
-    });
+          return channel;
+        });
+      }));
   }
 
   resize({ height }) {
@@ -82,7 +84,7 @@ class Widget {
   }
 
   destroy() {
-    if(this._connectChannel) {
+    if (this._connectChannel) {
       this.connectChannel().then((channel) => channel.close());
     }
 
@@ -90,7 +92,4 @@ class Widget {
   }
 }
 
-export {
-  Widget,
-  Channel
-};
+export { Widget, Channel };

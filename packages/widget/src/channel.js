@@ -17,11 +17,11 @@ export default class Channel extends EventEmitter {
   static listen(element) {
     return new Promise((resolve) => {
       element.addEventListener('message', (event) => {
-        if(event.data === INIT) {
+        if (event.data === INIT) {
           let channel = new Channel(event.ports[0]);
           channel.on('connect', () => resolve(channel));
         }
-      })
+      });
     });
   }
 
