@@ -24,7 +24,7 @@
   "scripts": {
     "lint": "eslint src test",
     "build": "rollup -c",
-    "test": "mocha",
+    "test": "rollup -c rollup.test.js",
     "test:watch": "pnpm test --watch",
     "prepublish": "pnpm lint && pnpm test && pnpm build"
   },
@@ -40,6 +40,8 @@
     "@babel/runtime": "^7.9.2",
     "@rollup/plugin-babel": "^6.0.0",
     "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-multi-entry": "^6.0.1",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "chai": "^5.0.0",
     "eslint": "^9.0.0",
@@ -49,6 +51,7 @@
     "mocha": "^11.0.0",
     "prettier": "^3.5.3",
     "rollup": "^4.0.0",
+    "rollup-plugin-mocha": "^0.0.1",
     "sinon": "^19.0.0",
     "sinon-chai": "^4.0.0",
     "ws": "^8.0.0"

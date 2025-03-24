@@ -2,16 +2,17 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
-import pkg from './package.json' with { type: "json" };
+import pkg from './package.json' with { type: 'json' };
 
-const plugins = [
+export const plugins = [
   resolve({
-    browser: true
+    browser: true,
+    preferBuiltins: true,
   }),
   commonjs(),
   babel({
-    babelHelpers: 'runtime'
-  })
+    babelHelpers: 'runtime',
+  }),
 ];
 
 export default [
@@ -20,22 +21,22 @@ export default [
     output: [
       {
         file: pkg.main,
-        format: 'cjs'
+        format: 'cjs',
       },
       {
         file: pkg.module,
-        format: 'esm'
-      }
+        format: 'esm',
+      },
     ],
-    plugins
+    plugins,
   },
   {
     input: 'src/umd.js',
     output: {
       file: 'dist/index.umd.js',
       format: 'umd',
-      name: 'Userlist'
+      name: 'Userlist',
     },
-    plugins
-  }
+    plugins,
+  },
 ];

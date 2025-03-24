@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { WebsocketTransport, StaticTokenProvider } from '../../src/index.js';
-import ActionCableMock from '../support/action_cable_mock.js';
+import { WebsocketTransport, StaticTokenProvider } from '../../src/index';
+import ActionCableMock from '../support/action_cable_mock';
 
 describe('WebsocketTransport', function () {
   let server, transport, tokenProvider;

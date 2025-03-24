@@ -127,6 +127,12 @@ importers:
       '@rollup/plugin-commonjs':
         specifier: ^28.0.0
         version: 28.0.3(rollup@4.36.0)
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.36.0)
+      '@rollup/plugin-multi-entry':
+        specifier: ^6.0.1
+        version: 6.0.1(rollup@4.36.0)
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.0
         version: 16.0.1(rollup@4.36.0)
@@ -154,6 +160,9 @@ importers:
       rollup:
         specifier: ^4.0.0
         version: 4.36.0
+      rollup-plugin-mocha:
+        specifier: ^0.0.1
+        version: 0.0.1(mocha@11.1.0)(rollup@4.36.0)
       sinon:
         specifier: ^19.0.0
         version: 19.0.4
@@ -1141,6 +1150,15 @@ packages:
     engines: {node: '>=16.0.0 || 14 >= 14.17'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-json@6.1.0':
+    resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==, tarball: https://registry.npmjs.org/@rollup/plugin-json/-/plugin-json-6.1.0.tgz}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -5457,6 +5475,12 @@ snapshots:
       is-reference: 1.2.1
       magic-string: 0.30.17
       picomatch: 4.0.2
+    optionalDependencies:
+      rollup: 4.36.0
+
+  '@rollup/plugin-json@6.1.0(rollup@4.36.0)':
+    dependencies:
+      '@rollup/pluginutils': 5.1.4(rollup@4.36.0)
     optionalDependencies:
       rollup: 4.36.0
 

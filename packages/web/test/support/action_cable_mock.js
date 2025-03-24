@@ -1,6 +1,6 @@
 import { WebSocketServer } from 'ws';
 
-import EventEmitter from '../../src/utils/event_emitter.js';
+import EventEmitter from '../../src/utils/event_emitter';
 
 export default class ActionCableMock extends EventEmitter {
   constructor() {

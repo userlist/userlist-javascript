@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { PromiseTokenProvider } from '../../src/index.js';
+import { PromiseTokenProvider } from '../../src/index';
 
 describe('PromiseTokenProvider', function () {
   describe('#receiveToken', function () {

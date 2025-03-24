@@ -1,7 +1,7 @@
 import { createConsumer } from '@rails/actioncable';
 
-import EventEmitter from '../utils/event_emitter.js';
-import { extractMessageId } from '../utils/message.js';
+import EventEmitter from '../utils/event_emitter';
+import { extractMessageId } from '../utils/message';
 
 export default class WebsocketTransport extends EventEmitter {
   constructor(tokenProvider, endpoint = 'wss://api.widget.userlist.com/cable') {

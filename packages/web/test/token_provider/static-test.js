@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { StaticTokenProvider } from '../../src/index.js';
+import { StaticTokenProvider } from '../../src/index';
 
 describe('StaticTokenProvider', function () {
   describe('#receiveToken', function () {

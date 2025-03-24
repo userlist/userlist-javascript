@@ -1,3 +1,3 @@
-import { Userlist } from './index.js';
+import { Userlist } from './index';
 
 export default Userlist;

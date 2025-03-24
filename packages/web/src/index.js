@@ -1,8 +1,8 @@
-import NullTransport from './transport/null.js';
-import WebsocketTransport from './transport/websocket.js';
-import WidgetTransport from './transport/widget.js';
-import StaticTokenProvider from './token_provider/static.js';
-import PromiseTokenProvider from './token_provider/promise.js';
+import NullTransport from './transport/null';
+import WebsocketTransport from './transport/websocket';
+import WidgetTransport from './transport/widget';
+import StaticTokenProvider from './token_provider/static';
+import PromiseTokenProvider from './token_provider/promise';
 
 import { Widget } from '@userlist/widget';
 
