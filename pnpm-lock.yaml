@@ -10,10 +10,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.22.0
     devDependencies:
       '@babel/core':
         specifier: ^7.9.0
@@ -33,6 +29,9 @@ importers:
       '@babel/runtime':
         specifier: ^7.9.2
         version: 7.26.10
+      '@eslint/js':
+        specifier: ^9.22.0
+        version: 9.22.0
       '@rollup/plugin-babel':
         specifier: ^6.0.0
         version: 6.0.4(@babel/core@7.26.10)(rollup@4.36.0)
@@ -92,9 +91,6 @@ importers:
 
   packages/web:
     dependencies:
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.22.0
       '@rails/actioncable':
         specifier: ^6.0.2-2
         version: 6.1.710
@@ -110,10 +106,6 @@ importers:
         version: 8.18.1
 
   packages/widget:
-    dependencies:
-      '@rollup/plugin-multi-entry':
-        specifier: ^6.0.1
-        version: 6.0.1(rollup@4.36.0)
     devDependencies:
       autoprefixer:
         specifier: ^10.0.0

@@ -30,17 +30,14 @@
     "type": "git",
     "url": "git+https://github.com/userlist/userlist-javascript.git"
   },
+  "bugs": {
+    "url": "https://github.com/userlist/userlist-javascript/issues"
+  },
   "scripts": {
     "lint": "eslint src test",
     "build": "rollup -c",
     "test": "rollup -c rollup.test.js",
     "test:watch": "pnpm test --watch",
     "prepublish": "pnpm lint && pnpm test && pnpm build"
-  },
-  "bugs": {
-    "url": "https://github.com/userlist/userlist-javascript/issues"
-  },
-  "volta": {
-    "node": "14.21.3"
   }
 }
