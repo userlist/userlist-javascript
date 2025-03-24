@@ -15,94 +15,6 @@ importers:
         specifier: ^9.22.0
         version: 9.22.0
     devDependencies:
-      lerna:
-        specifier: ^8.0.0
-        version: 8.2.1(encoding@0.1.13)
-
-  packages/push:
-    devDependencies:
-      '@babel/core':
-        specifier: ^7.9.0
-        version: 7.26.10
-      '@babel/eslint-parser':
-        specifier: ^7.26.10
-        version: 7.26.10(@babel/core@7.26.10)(eslint@9.22.0)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.9.0
-        version: 7.26.10(@babel/core@7.26.10)
-      '@babel/preset-env':
-        specifier: ^7.9.0
-        version: 7.26.9(@babel/core@7.26.10)
-      '@babel/register':
-        specifier: ^7.9.0
-        version: 7.25.9(@babel/core@7.26.10)
-      '@babel/runtime':
-        specifier: ^7.9.2
-        version: 7.26.10
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.22.0
-      '@rollup/plugin-babel':
-        specifier: ^6.0.0
-        version: 6.0.4(@babel/core@7.26.10)(rollup@4.36.0)
-      '@rollup/plugin-commonjs':
-        specifier: ^28.0.0
-        version: 28.0.3(rollup@4.36.0)
-      '@rollup/plugin-multi-entry':
-        specifier: ^6.0.1
-        version: 6.0.1(rollup@4.36.0)
-      '@rollup/plugin-node-resolve':
-        specifier: ^16.0.0
-        version: 16.0.1(rollup@4.36.0)
-      builtin-modules:
-        specifier: ^5.0.0
-        version: 5.0.0
-      chai:
-        specifier: ^5.0.0
-        version: 5.2.0
-      eslint:
-        specifier: ^9.0.0
-        version: 9.22.0
-      eslint-plugin-prettier:
-        specifier: ^5.2.3
-        version: 5.2.3(eslint-config-prettier@10.1.1(eslint@9.22.0))(eslint@9.22.0)(prettier@3.5.3)
-      globals:
-        specifier: ^16.0.0
-        version: 16.0.0
-      mocha:
-        specifier: ^11.0.0
-        version: 11.1.0
-      nock:
-        specifier: ^14.0.0
-        version: 14.0.1
-      prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
-      rollup:
-        specifier: ^4.0.0
-        version: 4.36.0
-      rollup-plugin-mocha:
-        specifier: ^0.0.1
-        version: 0.0.1(mocha@11.1.0)(rollup@4.36.0)
-      sinon:
-        specifier: ^19.0.0
-        version: 19.0.4
-      sinon-chai:
-        specifier: ^4.0.0
-        version: 4.0.0(chai@5.2.0)(sinon@19.0.4)
-
-  packages/web:
-    dependencies:
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.22.0
-      '@rails/actioncable':
-        specifier: ^6.0.2-2
-        version: 6.1.710
-      '@userlist/widget':
-        specifier: ^0.3.8
-        version: 0.3.8
-    devDependencies:
       '@babel/core':
         specifier: ^7.9.0
         version: 7.26.10
@@ -128,7 +40,7 @@ importers:
         specifier: ^28.0.0
         version: 28.0.3(rollup@4.36.0)
       '@rollup/plugin-json':
-        specifier: ^6.1.0
+        specifier: ^6.0.0
         version: 6.1.0(rollup@4.36.0)
       '@rollup/plugin-multi-entry':
         specifier: ^6.0.1
@@ -136,6 +48,9 @@ importers:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.0
         version: 16.0.1(rollup@4.36.0)
+      builtin-modules:
+        specifier: ^5.0.0
+        version: 5.0.0
       chai:
         specifier: ^5.0.0
         version: 5.2.0
@@ -148,12 +63,15 @@ importers:
       globals:
         specifier: ^16.0.0
         version: 16.0.0
-      jsdom:
-        specifier: ^26.0.0
-        version: 26.0.0
+      lerna:
+        specifier: ^8.0.0
+        version: 8.2.1(encoding@0.1.13)
       mocha:
         specifier: ^11.0.0
         version: 11.1.0
+      nock:
+        specifier: ^14.0.0
+        version: 14.0.1
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -169,6 +87,24 @@ importers:
       sinon-chai:
         specifier: ^4.0.0
         version: 4.0.0(chai@5.2.0)(sinon@19.0.4)
+
+  packages/push: {}
+
+  packages/web:
+    dependencies:
+      '@eslint/js':
+        specifier: ^9.22.0
+        version: 9.22.0
+      '@rails/actioncable':
+        specifier: ^6.0.2-2
+        version: 6.1.710
+      '@userlist/widget':
+        specifier: ^0.3.8
+        version: 0.3.8
+    devDependencies:
+      jsdom:
+        specifier: ^26.0.0
+        version: 26.0.0
       ws:
         specifier: ^8.0.0
         version: 8.18.1
@@ -179,93 +115,27 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1(rollup@4.36.0)
     devDependencies:
-      '@babel/core':
-        specifier: ^7.9.0
-        version: 7.26.10
-      '@babel/eslint-parser':
-        specifier: ^7.26.10
-        version: 7.26.10(@babel/core@7.26.10)(eslint@9.22.0)
-      '@babel/plugin-transform-runtime':
-        specifier: ^7.9.0
-        version: 7.26.10(@babel/core@7.26.10)
-      '@babel/preset-env':
-        specifier: ^7.9.0
-        version: 7.26.9(@babel/core@7.26.10)
-      '@babel/register':
-        specifier: ^7.9.0
-        version: 7.25.9(@babel/core@7.26.10)
-      '@babel/runtime':
-        specifier: ^7.9.2
-        version: 7.26.10
-      '@eslint/js':
-        specifier: ^9.22.0
-        version: 9.22.0
-      '@rollup/plugin-babel':
-        specifier: ^6.0.0
-        version: 6.0.4(@babel/core@7.26.10)(rollup@4.36.0)
-      '@rollup/plugin-commonjs':
-        specifier: ^28.0.0
-        version: 28.0.3(rollup@4.36.0)
-      '@rollup/plugin-node-resolve':
-        specifier: ^16.0.0
-        version: 16.0.1(rollup@4.36.0)
       autoprefixer:
         specifier: ^10.0.0
         version: 10.4.21(postcss@8.5.3)
-      chai:
-        specifier: ^5.0.0
-        version: 5.2.0
-      eslint:
-        specifier: ^9.0.0
-        version: 9.22.0
-      eslint-config-prettier:
-        specifier: ^10.1.1
-        version: 10.1.1(eslint@9.22.0)
-      eslint-plugin-prettier:
-        specifier: ^5.2.3
-        version: 5.2.3(eslint-config-prettier@10.1.1(eslint@9.22.0))(eslint@9.22.0)(prettier@3.5.3)
-      globals:
-        specifier: ^16.0.0
-        version: 16.0.0
       ignore-styles:
         specifier: ^5.0.1
         version: 5.0.1
       jsdom:
         specifier: ^26.0.0
         version: 26.0.0
-      mocha:
-        specifier: ^11.0.0
-        version: 11.1.0
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
       postcss-initial:
         specifier: ^3.0.2
         version: 3.0.4
-      prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
-      rollup:
-        specifier: ^4.0.0
-        version: 4.36.0
-      rollup-plugin-import-css:
-        specifier: ^3.5.8
-        version: 3.5.8(rollup@4.36.0)
-      rollup-plugin-mocha:
-        specifier: ^0.0.1
-        version: 0.0.1(mocha@11.1.0)(rollup@4.36.0)
       rollup-plugin-postcss:
         specifier: ^4.0.0
         version: 4.0.2(postcss@8.5.3)
       rollup-plugin-serve:
         specifier: ^3.0.0
         version: 3.0.0
-      sinon:
-        specifier: ^19.0.0
-        version: 19.0.4
-      sinon-chai:
-        specifier: ^4.0.0
-        version: 4.0.0(chai@5.2.0)(sinon@19.0.4)
 
 packages:
 
@@ -3699,12 +3569,6 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  rollup-plugin-import-css@3.5.8:
-    resolution: {integrity: sha512-a3YsZnwHz66mRHCKHjaPCSfWczczvS/HTkgDc+Eogn0mt/0JZXz0WjK0fzM5WwBpVtOqHB4/gHdmEY40ILsaVg==, tarball: https://registry.npmjs.org/rollup-plugin-import-css/-/rollup-plugin-import-css-3.5.8.tgz}
-    engines: {node: '>=16'}
-    peerDependencies:
-      rollup: ^2.x.x || ^3.x.x || ^4.x.x
-
   rollup-plugin-mocha@0.0.1:
     resolution: {integrity: sha512-1bcWmXLMmw4zPHCMqoxKjUo8Fy5DO8zFSHuTcz1+mgNTwCG6IV4u4mO27hDvrWEuXHLdsAuYm+G/sJ0FZR2mlQ==, tarball: https://registry.npmjs.org/rollup-plugin-mocha/-/rollup-plugin-mocha-0.0.1.tgz}
     engines: {node: '>=0.1.16'}
@@ -6296,6 +6160,7 @@ snapshots:
   eslint-config-prettier@10.1.1(eslint@9.22.0):
     dependencies:
       eslint: 9.22.0
+    optional: true
 
   eslint-plugin-prettier@5.2.3(eslint-config-prettier@10.1.1(eslint@9.22.0))(eslint@9.22.0)(prettier@3.5.3):
     dependencies:
@@ -8139,11 +8004,6 @@ snapshots:
   rimraf@4.4.1:
     dependencies:
       glob: 9.3.5
-
-  rollup-plugin-import-css@3.5.8(rollup@4.36.0):
-    dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.36.0)
-      rollup: 4.36.0
 
   rollup-plugin-mocha@0.0.1(mocha@11.1.0)(rollup@4.36.0):
     dependencies:
