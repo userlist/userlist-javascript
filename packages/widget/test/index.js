@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { Widget, Channel } from '../src/index.js';
+import { Widget, Channel } from '../src/index';
 
 describe('#Widget', function () {
   it('should exist', function () {

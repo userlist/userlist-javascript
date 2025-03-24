@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Event from '../src/event.js';
+import Event from '../src/event';
 
 describe('Event', function () {
   describe('validations', function () {

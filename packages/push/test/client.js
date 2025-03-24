@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import Client from '../src/client.js';
+import Client from '../src/client';
 
 describe('Client', function () {
   let client,

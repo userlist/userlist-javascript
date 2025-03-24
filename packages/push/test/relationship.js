@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Relationship from '../src/relationship.js';
+import Relationship from '../src/relationship';
 
 describe('Relationship', function () {
   describe('validations', function () {

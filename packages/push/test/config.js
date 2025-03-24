@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Config from '../src/config.js';
+import Config from '../src/config';
 
 describe('Config', function () {
   let env;

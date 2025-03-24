@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Company from '../src/company.js';
+import Company from '../src/company';
 
 describe('Company', function () {
   describe('validations', function () {

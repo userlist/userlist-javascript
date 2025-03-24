@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { Channel } from '../src/index.js';
-import EventEmitter from '../src/utils/event_emitter.js';
+import { Channel } from '../src/index';
+import EventEmitter from '../src/utils/event_emitter';
 
 class MockWindow extends EventEmitter {
   postMessage(data, origin, ports) {
