@@ -44,6 +44,9 @@ const userlist = new Userlist({
 
 ## Usage
 
+> [!TIP]
+> All of the following methods return promises. In order to decouple your application from our service, we recommend to not await them. If you decide to still await them, make sure to add proper error handling.
+
 ### Tracking Users
 
 To send user data into Userlist, use the `userlist.users.push` method. This method will create a new user if the user doesn't exist yet, or update the existing user if it does. Properties that aren't present in the payload are ignored and remain unchanged.

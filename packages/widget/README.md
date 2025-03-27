@@ -1,11 +1,5 @@
-# `@userlist/widget`
+# @userlist/widget
 
-> TODO: description
-
-## Usage
-
-```
-const widget = require('@userlist/widget');
-
-// TODO: DEMONSTRATE API
-```
+> [!WARNING]
+> This package is not intended for direct usage.
+> Use the [@userlist/web](https://github.com/userlist/userlist-javascript/tree/main/packages/web) package instead.
