@@ -1,22 +1,17 @@
-import http from 'http';
 import https from 'https';
 
 import Config from '../src/config';
 
-function performRequest(method, url, headers, payload) {
-  let isTLS = url.protocol === 'https:';
-  let client = isTLS ? https : http;
-
-  let options = {
-    method,
+function performRequest({ url, payload, ...options }) {
+  options = {
     hostname: url.host,
-    port: url.port !== '' ? url.port : isTLS ? 443 : 80,
+    port: url.port !== '' ? url.port : 443,
     path: url.pathname,
-    headers: headers,
+    ...options,
   };
 
   return new Promise(function (resolve, reject) {
-    let request = client.request(options, (response) => {
+    let request = https.request(options, (response) => {
       resolve(response);
     });
 
@@ -37,6 +32,8 @@ function performRequest(method, url, headers, payload) {
 export default class Client {
   constructor(config = {}) {
     this.config = new Config(config);
+
+    this.agent = new https.Agent({ keepAlive: true });
   }
 
   get(endpoint) {
@@ -57,6 +54,7 @@ export default class Client {
 
   _request(method, endpoint, payload) {
     let { pushEndpoint, pushKey } = this.config;
+    let { agent } = this;
 
     let url = new URL(endpoint, pushEndpoint);
     let headers = {
@@ -65,6 +63,6 @@ export default class Client {
       Authorization: `Push ${pushKey}`,
     };
 
-    return performRequest(method, url, headers, payload);
+    return performRequest({ method, url, headers, payload, agent });
   }
 }
