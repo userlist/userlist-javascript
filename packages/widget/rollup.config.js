@@ -21,11 +21,13 @@ export default {
     },
   ],
   plugins: [
-    resolve(),
+    resolve({
+      browser: true,
+    }),
+    commonjs(),
     babel({
       babelHelpers: 'runtime',
     }),
-    commonjs(),
     postcss({
       inject: false,
       minimize: true,

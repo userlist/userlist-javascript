@@ -1,4 +1,5 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-transform-runtime"]
+  "plugins": ["@babel/plugin-transform-runtime"],
+  "targets": "chrome >= 64, edge >= 79, firefox >= 67, safari >= 12, ios_saf >= 12, opera >= 51, samsung >= 9"
 }

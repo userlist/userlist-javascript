@@ -35,7 +35,7 @@
   },
   "scripts": {
     "lint": "eslint src test",
-    "build": "rollup -c",
+    "build": "rm -rf dist && rollup -c",
     "test": "rollup -c rollup.test.js",
     "test:watch": "pnpm test --watch",
     "prepublish": "pnpm lint && pnpm test && pnpm build"
