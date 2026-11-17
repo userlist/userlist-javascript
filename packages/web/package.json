@@ -43,6 +43,6 @@
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.2-2",
-    "@userlist/widget": "^0.3.8"
+    "@userlist/widget": "workspace:^"
   }
 }
